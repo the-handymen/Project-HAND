@@ -1,48 +1,57 @@
-//number of elements
-resolution = 50;
+use <fustrum.scad>
 
 //scale of the full design
 SCALE = 1;
 
-//hollowed percentage
-HOLLOWP = 0.8;
+///////////////////////////////////
+//////////BASIC STRUCTURE//////////
+///////////////////////////////////
+//wall thickness
+THICK = 1;
+
+//top thickness
+TOPTHICK = 10;
+
+//bottom thickness
+BOTTHICK = 1;
 
 //height of the full design
-HEIGHT = 20 * SCALE;
+HEIGHT = 20;
 
 //dimensions of the bottom layer
-BOTLENGTH = 100 * SCALE;
-BOTWIDTH = 70 * SCALE;
+BOTLENGTH = 100;
+BOTWIDTH = 70;
 
 //dimensions of the top layer
-TOPLENGTH = 80 *SCALE;
-TOPWIDTH = 42 * SCALE;
+TOPLENGTH = 80;
+TOPWIDTH = 42;
 
-//element dimension change
-ELEMLENGTH = (BOTLENGTH - TOPLENGTH )/ resolution;
-ELEMWIDTH = (BOTWIDTH - TOPWIDTH) / resolution;
-ELEMHEIGHT = HEIGHT / resolution;
+///////////////////////////////////
+/////////////   LCD   /////////////
+///////////////////////////////////
+//dimensions of the LCD
+L_LENGTH = 30;
+L_WIDTH = 10;
 
-for(i = [1 : 1 : resolution]){
-    difference(){
-        translate([
-        0, //x
-        0, //y
-        ((i-1)*ELEMHEIGHT) + (ELEMHEIGHT/2)]) //z 
-        %cube([
-        BOTLENGTH - (i * ELEMLENGTH), //length
-        BOTWIDTH - (i * ELEMWIDTH),   //width
-        ELEMHEIGHT],                   //height
-        true);                         //center
-        
-        translate([
-        0, //x
-        0, //y
-        ((i-1)*ELEMHEIGHT) + (ELEMHEIGHT/2)])
-        #cube([
-        (BOTLENGTH - (i * ELEMLENGTH)) *HOLLOWP, //length
-        (BOTWIDTH - (i * ELEMWIDTH)) * HOLLOWP,   //width
-        ELEMHEIGHT],                   //height
-        true);                         //center
-    }
+//placement of the LCD (offset from 0,0)
+L_XOFF = 10;
+L_YOFF = 10;
+
+difference(){ 
+  //base shape   
+  %centered_fustrum(BOTLENGTH * SCALE, 
+                   BOTWIDTH * SCALE,
+                   TOPLENGTH * SCALE,
+                   TOPWIDTH * SCALE,
+                   HEIGHT * SCALE);
+    
+  //hollowed center  
+  translate([((THICK) + (0.5*(BOTLENGTH - TOPLENGTH) * BOTTHICK / HEIGHT)) * SCALE,
+             ((THICK) + (0.5*(BOTWIDTH - TOPWIDTH) * BOTTHICK / HEIGHT)) * SCALE,
+              (BOTTHICK)*SCALE])
+  #centered_fustrum((BOTLENGTH - 2*THICK - ((BOTLENGTH - TOPLENGTH) * BOTTHICK / HEIGHT)) * SCALE,
+                   (BOTWIDTH - 2*THICK - ((BOTWIDTH - TOPWIDTH) * BOTTHICK / HEIGHT)) * SCALE,
+                   (TOPLENGTH - 2*THICK + ((BOTLENGTH - TOPLENGTH) * TOPTHICK / HEIGHT)) * SCALE,
+                   (TOPWIDTH - 2*THICK + ((BOTWIDTH - TOPWIDTH) * TOPTHICK / HEIGHT)) * SCALE,
+                   ((HEIGHT - TOPTHICK - BOTTHICK) * SCALE));
 }
