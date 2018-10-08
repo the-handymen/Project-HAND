@@ -8611,6 +8611,8 @@ DIN female/male, etc.&lt;p&gt;
 <part name="GND26" library="supply1" deviceset="GND" device=""/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
+<part name="LCD" library="con-lstb" deviceset="MA03-1" device=""/>
+<part name="GND28" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8751,20 +8753,13 @@ DIN female/male, etc.&lt;p&gt;
 <instance part="GND26" gate="1" x="33.02" y="53.34" rot="R90"/>
 <instance part="GND27" gate="1" x="-5.08" y="45.72" rot="R270"/>
 <instance part="GND25" gate="1" x="-5.08" y="-71.12" rot="R270"/>
+<instance part="LCD" gate="G$1" x="-12.7" y="96.52" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="-5.08" y="97.79" size="1.778" layer="96" rot="MR270"/>
+<attribute name="NAME" x="-5.08" y="91.44" size="1.778" layer="95" rot="MR90"/>
+</instance>
+<instance part="GND28" gate="1" x="-15.24" y="83.82"/>
 </instances>
 <busses>
-<bus name="SSI1CLK,SSI1FSS,SSI1RX,SSI1TX">
-<segment>
-<wire x1="-17.78" y1="25.4" x2="-20.32" y2="27.94" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="27.94" x2="-20.32" y2="33.02" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="33.02" x2="-20.32" y2="38.1" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="38.1" x2="-20.32" y2="43.18" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="43.18" x2="-20.32" y2="63.5" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="33.02" x2="-17.78" y2="30.48" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="38.1" x2="-17.78" y2="35.56" width="0.762" layer="92"/>
-<wire x1="-20.32" y1="43.18" x2="-17.78" y2="40.64" width="0.762" layer="92"/>
-</segment>
-</bus>
 <bus name="U1RX,U1TX,GPIOE1,GPIOE2,GPIOE3">
 <segment>
 <wire x1="-30.48" y1="43.18" x2="-33.02" y2="40.64" width="0.762" layer="92"/>
@@ -8835,34 +8830,6 @@ DIN female/male, etc.&lt;p&gt;
 </bus>
 </busses>
 <nets>
-<net name="SSI1CLK" class="0">
-<segment>
-<pinref part="TIVA1" gate="TIVA" pin="PD0"/>
-<wire x1="-2.54" y1="40.64" x2="-17.78" y2="40.64" width="0.1524" layer="91"/>
-<label x="-15.24" y="40.64" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="SSI1FSS" class="0">
-<segment>
-<pinref part="TIVA1" gate="TIVA" pin="PD1"/>
-<wire x1="-17.78" y1="35.56" x2="-2.54" y2="35.56" width="0.1524" layer="91"/>
-<label x="-15.24" y="35.56" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="SSI1RX" class="0">
-<segment>
-<pinref part="TIVA1" gate="TIVA" pin="PD2"/>
-<wire x1="-17.78" y1="30.48" x2="-2.54" y2="30.48" width="0.1524" layer="91"/>
-<label x="-15.24" y="30.48" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="SSI1TX" class="0">
-<segment>
-<pinref part="TIVA1" gate="TIVA" pin="PD3"/>
-<wire x1="-17.78" y1="25.4" x2="-2.54" y2="25.4" width="0.1524" layer="91"/>
-<label x="-15.24" y="25.4" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="U1RX" class="0">
 <segment>
 <pinref part="TIVA1" gate="TIVA" pin="PB0"/>
@@ -9188,6 +9155,11 @@ DIN female/male, etc.&lt;p&gt;
 <pinref part="XB1" gate="G$1" pin="GND"/>
 <pinref part="GND25" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="LCD" gate="G$1" pin="3"/>
+<pinref part="GND28" gate="1" pin="GND"/>
+<wire x1="-15.24" y1="86.36" x2="-15.24" y2="88.9" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -9445,6 +9417,11 @@ DIN female/male, etc.&lt;p&gt;
 <junction x="-20.32" y="-12.7"/>
 <label x="-25.4" y="-12.7" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="LCD" gate="G$1" pin="2"/>
+<wire x1="-12.7" y1="88.9" x2="-12.7" y2="86.36" width="0.1524" layer="91"/>
+<label x="-12.7" y="86.36" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="N$23" class="0">
 <segment>
@@ -9522,6 +9499,16 @@ DIN female/male, etc.&lt;p&gt;
 <pinref part="R17" gate="G$1" pin="2"/>
 <wire x1="-2.54" y1="-25.4" x2="-53.34" y2="-25.4" width="0.1524" layer="91"/>
 <label x="-53.34" y="-25.4" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIOE5" class="0">
+<segment>
+<pinref part="TIVA1" gate="TIVA" pin="PE5"/>
+<wire x1="-5.08" y1="27.94" x2="-7.62" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="27.94" x2="-10.16" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="30.48" x2="-10.16" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="LCD" gate="G$1" pin="1"/>
+<label x="-7.62" y="78.74" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 </nets>
