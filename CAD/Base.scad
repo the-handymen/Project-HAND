@@ -1,61 +1,9 @@
 use <fustrum.scad>
+include <BaseParameters.scad>
 
-//scale of the full design
-SCALE = 1;
 
-///////////////////////////////////
-//////////BASIC STRUCTURE//////////
-///////////////////////////////////
-
-//wall thickness
-THICK = 3;
-
-//top thickness
-TOPTHICK = 3;
-
-//bottom thickness
-BOTTHICK = 3;
-
-//height of the full design
-HEIGHT = 20;
-
-//dimensions of the bottom layer
-BOTLENGTH = 100; //length
-BOTWIDTH = 70;   //width
-
-//dimensions of the top layer
-TOPLENGTH = 80; //length
-TOPWIDTH = 42;  //width
-
-///////////////////////////////////
-/////////////   LCD   /////////////
-///////////////////////////////////
-
-//dimensions
-L_LENGTH = 25; //length
-L_WIDTH = 10;  //width
-
-//placement on base wall (offset from 0,0)
-L_XOFF = 20; //offset on x-axis
-L_YOFF = 5;  //offset on y-axis
-
-///////////////////////////////////
-////////  ROTARY ENCODER   ////////
-///////////////////////////////////
-
-//radius
-RE_RADIUS = 3;
-
-//placement on base wall (offset from 0,0)
-RE_XOFF = 55; //offset on x-axis
-RE_YOFF = 7;  //offset on y-axis
-
-///////////////////////////////////
-///////////// DRAWING /////////////
-///////////////////////////////////
 difference(){ 
   //BASE SHAPE  
-  
   centered_fustrum(
     //BOTTOM LENGTH (x-axis)
     BOTLENGTH * SCALE, //bottom length, adjusted for scale
@@ -71,11 +19,10 @@ difference(){
   
     //HEIGHT (z-axis)
     HEIGHT * SCALE); //height, adjusted for scale
-  
-  //END BASE SHAPE
     
-  //HOLLOWED CENTER
   
+  
+  //HOLLOWED CENTER
   translate([
     //X TRANSLATION
     ((THICK) +                                        //wall thickness
@@ -116,18 +63,17 @@ difference(){
     ((HEIGHT - TOPTHICK - BOTTHICK)//full height excluding top and bottom thickness 
     * SCALE));                     //adjust for scale
                    
-  //END HOLLOWED CENTER
+
 
   //LCD CUTOUT
-  
   translate([
     //X TRANSLATION
     L_XOFF * SCALE, //x offset, adjusted for scale
                
     //Y TRANSLATION
-    L_YOFF *                                            //y offset
-    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH))))//move the cutout along the sloped wall
-    * SCALE,                                            //adjust for scale
+    (-1 + L_YOFF *                                       //y offset
+    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))//move the cutout along the sloped wall
+    * SCALE,                                             //adjust for scale
                
     //Z TRANSLATION
     L_YOFF * SCALE])//y offset, adjusted for scale
@@ -139,31 +85,30 @@ difference(){
     //AXIS
     [1, 0, 0]) //x-axis
           
-  cube([
-         //LENGTH (x-axis)
-         L_LENGTH * SCALE, //length adjusted for scale
+  #cube([
+    //LENGTH (x-axis)
+    L_LENGTH * SCALE, //length adjusted for scale
          
-         //THICKNESS (y-axis)
-         THICK * SCALE,    //wall thickness, adjusted for scale, to cut through entire side wall
+    //THICKNESS (y-axis)
+    (THICK + 1) * SCALE, //wall thickness, adjusted for scale, to cut through entire side wall
          
-         //WIDTH (z-axis)
-         L_WIDTH * SCALE]);//width adjusted for scale
+    //WIDTH (z-axis)
+    L_WIDTH * SCALE]); //width adjusted for scale
     
-  //END LCD CUTOUT
+  
   
   //ROTARY ENCODER CUTOUT
-  
   translate([
     //X TRANSLATION
     RE_XOFF * SCALE, //x offset, adjusted for scale
                
     //Y TRANSLATION
-    RE_YOFF *                                            //y offset
-    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH))))//move the cutout along the sloped wall
-    * SCALE,                                            //adjust for scale
+    (-1 + RE_YOFF *                                      //y offset
+    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))//move the cutout along the sloped wall
+    * SCALE,                                             //adjust for scale
                
     //Z TRANSLATION
-    RE_YOFF * SCALE])//y offset, adjusted for scale
+    RE_YOFF * SCALE]) //y offset, adjusted for scale
   
   rotate(
     //ANGLE
@@ -172,12 +117,65 @@ difference(){
     //AXIS
     [1, 0, 0]) //x-axis
     
-  cylinder(
+  #cylinder(
     //HEIGHT
-    THICK * SCALE, //wall thickness, adjusted for scale
+    (THICK + 1) * SCALE, //wall thickness, adjusted for scale
     
     //RADIUS
     r = RE_RADIUS * SCALE); //radius, adjusted for scale
   
-  //END ROTARY ENCODER CUTOUT
+
+
+  //POWER INPUT CUTOUT
+  translate([
+    //X TRANSLATION
+    (BOTLENGTH - 2*THICK -                                           //initial position on far wall, accounting for wall thickness
+    PI_YOFF * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))))//move the cutout along the sloped wall
+    * SCALE,                                                         //adjust for scale
+    
+    //Y TRANSLATION
+    PI_XOFF * SCALE, //x offset (on the plane of the wall cutout is placed on)
+    
+    //Z TRANSLATION,
+    PI_YOFF * SCALE])//y offset (on the plane of the wall cutout is placed on)
+    
+    
+  #cube([
+    //THICKNESS (x-axis)
+    2*THICK * SCALE, //extra thickness to cut through entire wall, adjusted for scale
+    
+    //LENGTH (y-axis)
+    PI_LENGTH * SCALE, //length of cutout, adjusted for scale
+    
+    //WIDTH (z-axis)
+    PI_WIDTH * SCALE]); //width of cutout adjusted for scale
+    
+    
+    
+  //POWER SWITCH CUTOUT
+  translate([
+    //X TRANSLATION
+    (BOTLENGTH + 1 -                                                 //initial position on far wall
+    PS_YOFF * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))))//move the cutout along the sloped wall
+    * SCALE,                                                         //adjust for scale
+               
+    //Y TRANSLATION
+    PS_XOFF * SCALE, //x offset (on the plane of the wall cutout is placed on)
+               
+    //Z TRANSLATION
+    PS_YOFF * SCALE])//y offset (on the plane of the wall cutout is placed on)
+  
+  rotate(
+    //ANGLE
+    atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)) - 180, //angle of the wall cutout is placed on
+    
+    //AXIS
+    [0, 1, 0]) //y-axis
+    
+  #cylinder(
+    //HEIGHT
+    THICK * SCALE, //wall thickness, adjusted for scale
+    
+    //RADIUS
+    r = PS_RADIUS * SCALE); //radius, adjusted for scale
 }
