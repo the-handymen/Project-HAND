@@ -2,7 +2,7 @@
 SCALE = 1;
 
 //resolution of the outer design (~50 MAX)
-RESOLUTION =50;
+RESOLUTION =25;
 
 //total height of the design
 TOTAL_HEIGHT = 30 * SCALE;
