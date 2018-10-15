@@ -218,7 +218,7 @@
 </packages>
 <symbols>
 <symbol name="TIVA-BOARD">
-<pin name="3.3V" x="-5.08" y="53.34" visible="pin" length="middle" direction="pwr"/>
+<pin name="3V3" x="-5.08" y="53.34" visible="pin" length="middle"/>
 <pin name="PB5" x="-5.08" y="48.26" visible="pin" length="middle"/>
 <pin name="PB0" x="-5.08" y="43.18" visible="pin" length="middle"/>
 <pin name="PB1" x="-5.08" y="38.1" visible="pin" length="middle"/>
@@ -228,8 +228,8 @@
 <pin name="PA5" x="-5.08" y="17.78" visible="pin" length="middle"/>
 <pin name="PA6" x="-5.08" y="12.7" visible="pin" length="middle"/>
 <pin name="PA7" x="-5.08" y="7.62" visible="pin" length="middle"/>
-<pin name="5V" x="-2.54" y="50.8" visible="pin" length="middle" direction="pwr"/>
-<pin name="GND@1" x="-2.54" y="45.72" visible="pin" length="middle" direction="pwr"/>
+<pin name="5V" x="-2.54" y="50.8" visible="pin" length="middle"/>
+<pin name="GND@1" x="-2.54" y="45.72" visible="pin" length="middle"/>
 <pin name="PD0" x="-2.54" y="40.64" visible="pin" length="middle"/>
 <pin name="PD1" x="-2.54" y="35.56" visible="pin" length="middle"/>
 <pin name="PD2" x="-2.54" y="30.48" visible="pin" length="middle"/>
@@ -238,7 +238,7 @@
 <pin name="PE2" x="-2.54" y="15.24" visible="pin" length="middle"/>
 <pin name="PE3" x="-2.54" y="10.16" visible="pin" length="middle"/>
 <pin name="PF1" x="-2.54" y="5.08" visible="pin" length="middle"/>
-<pin name="GND@2" x="30.48" y="53.34" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="GND@2" x="30.48" y="53.34" visible="pin" length="middle" rot="R180"/>
 <pin name="PF2" x="27.94" y="50.8" visible="pin" length="middle" rot="R180"/>
 <pin name="PB2" x="30.48" y="48.26" visible="pin" length="middle" rot="R180"/>
 <pin name="PF3" x="27.94" y="45.72" visible="pin" length="middle" rot="R180"/>
@@ -274,7 +274,7 @@
 <devices>
 <device name="" package="TIVA-BOARD">
 <connects>
-<connect gate="TIVA" pin="3.3V" pad="3.3V"/>
+<connect gate="TIVA" pin="3V3" pad="3.3V"/>
 <connect gate="TIVA" pin="5V" pad="5V"/>
 <connect gate="TIVA" pin="GND@1" pad="GND@1"/>
 <connect gate="TIVA" pin="GND@2" pad="GND@2"/>
@@ -8904,23 +8904,23 @@ Based on  the following source:
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="T6" library="transistor" deviceset="2N3904" device=""/>
 <part name="R10" library="rcl" deviceset="R-US_" device="0207/7"/>
-<part name="LEDM1PWM3" library="led" deviceset="LED" device="5MM"/>
+<part name="LEDM0PWM0" library="led" deviceset="LED" device="5MM"/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="T7" library="transistor" deviceset="2N3904" device=""/>
 <part name="R11" library="rcl" deviceset="R-US_" device="0207/7"/>
-<part name="LEDM0PWM0" library="led" deviceset="LED" device="5MM"/>
+<part name="LEDM0PWM1" library="led" deviceset="LED" device="5MM"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="T8" library="transistor" deviceset="2N3904" device=""/>
 <part name="R12" library="rcl" deviceset="R-US_" device="0207/7"/>
-<part name="LEDM0PWM6" library="led" deviceset="LED" device="5MM"/>
+<part name="LEDM1PWM4" library="led" deviceset="LED" device="5MM"/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="T9" library="transistor" deviceset="2N3904" device=""/>
 <part name="R13" library="rcl" deviceset="R-US_" device="0207/7"/>
-<part name="LEDM1PWM4" library="led" deviceset="LED" device="5MM"/>
+<part name="LEDM1PWM6" library="led" deviceset="LED" device="5MM"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="T10" library="transistor" deviceset="2N3904" device=""/>
 <part name="R14" library="rcl" deviceset="R-US_" device="0207/7"/>
-<part name="LEDM1PWM6" library="led" deviceset="LED" device="5MM"/>
+<part name="LEDM0PWM6" library="led" deviceset="LED" device="5MM"/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
 <part name="C3" library="rcl" deviceset="C-US" device="025-025X050" value="0.1 uF"/>
@@ -8942,7 +8942,6 @@ Based on  the following source:
 <part name="R22" library="rcl" deviceset="R-US_" device="0207/7"/>
 <part name="R23" library="rcl" deviceset="R-US_" device="0207/7"/>
 <part name="R24" library="rcl" deviceset="R-US_" device="0207/7"/>
-<part name="GND26" library="supply1" deviceset="GND" device=""/>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="GND25" library="supply1" deviceset="GND" device=""/>
 <part name="LCD" library="con-lstb" deviceset="MA03-1" device=""/>
@@ -8968,8 +8967,8 @@ Based on  the following source:
 <part name="GND33" library="supply1" deviceset="GND" device=""/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 <part name="SWITCH" library="pinhead" deviceset="PINHD-1X2" device=""/>
-<part name="REG3V3" library="linear" deviceset="78*" device="T" technology="06"/>
 <part name="X1" library="con-berg" deviceset="PN87520" device=""/>
+<part name="REG3V3" library="linear" deviceset="78*" device="TV" technology="05"/>
 </parts>
 <sheets>
 <sheet>
@@ -9043,31 +9042,31 @@ Based on  the following source:
 <attribute name="NAME" x="17.78" y="66.04" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="R10" gate="G$1" x="35.56" y="66.04"/>
-<instance part="LEDM1PWM3" gate="G$1" x="27.94" y="66.04" rot="R270"/>
+<instance part="LEDM0PWM0" gate="G$1" x="27.94" y="66.04" rot="R270"/>
 <instance part="GND14" gate="1" x="10.16" y="66.04" rot="R270"/>
 <instance part="T7" gate="G1" x="17.78" y="91.44" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.78" y="88.9" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="R11" gate="G$1" x="35.56" y="88.9"/>
-<instance part="LEDM0PWM0" gate="G$1" x="27.94" y="88.9" rot="R270"/>
+<instance part="LEDM0PWM1" gate="G$1" x="27.94" y="88.9" rot="R270"/>
 <instance part="GND15" gate="1" x="10.16" y="88.9" rot="R270"/>
 <instance part="T8" gate="G1" x="17.78" y="114.3" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.78" y="111.76" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="R12" gate="G$1" x="35.56" y="111.76"/>
-<instance part="LEDM0PWM6" gate="G$1" x="27.94" y="111.76" rot="R270"/>
+<instance part="LEDM1PWM4" gate="G$1" x="27.94" y="111.76" rot="R270"/>
 <instance part="GND16" gate="1" x="10.16" y="111.76" rot="R270"/>
 <instance part="T9" gate="G1" x="17.78" y="134.62" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.78" y="132.08" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="R13" gate="G$1" x="35.56" y="132.08"/>
-<instance part="LEDM1PWM4" gate="G$1" x="27.94" y="132.08" rot="R270"/>
+<instance part="LEDM1PWM6" gate="G$1" x="27.94" y="132.08" rot="R270"/>
 <instance part="GND17" gate="1" x="10.16" y="132.08" rot="R270"/>
 <instance part="T10" gate="G1" x="17.78" y="154.94" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.78" y="152.4" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="R14" gate="G$1" x="35.56" y="152.4"/>
-<instance part="LEDM1PWM6" gate="G$1" x="27.94" y="152.4" rot="R270"/>
+<instance part="LEDM0PWM6" gate="G$1" x="27.94" y="152.4" rot="R270"/>
 <instance part="GND18" gate="1" x="10.16" y="152.4" rot="R270"/>
 <instance part="GND19" gate="1" x="-81.28" y="50.8" rot="R270"/>
 <instance part="C3" gate="G$1" x="-86.36" y="30.48"/>
@@ -9089,7 +9088,6 @@ Based on  the following source:
 <instance part="R22" gate="G$1" x="25.4" y="119.38"/>
 <instance part="R23" gate="G$1" x="25.4" y="139.7"/>
 <instance part="R24" gate="G$1" x="25.4" y="160.02"/>
-<instance part="GND26" gate="1" x="33.02" y="53.34" rot="R90"/>
 <instance part="GND27" gate="1" x="-5.08" y="45.72" rot="R270"/>
 <instance part="GND25" gate="1" x="-5.08" y="-71.12" rot="R270"/>
 <instance part="LCD" gate="G$1" x="-12.7" y="96.52" smashed="yes" rot="MR270">
@@ -9123,8 +9121,8 @@ Based on  the following source:
 <instance part="GND33" gate="1" x="111.76" y="-71.12"/>
 <instance part="GND34" gate="1" x="119.38" y="-71.12"/>
 <instance part="SWITCH" gate="G$1" x="-93.98" y="60.96" rot="R180"/>
-<instance part="REG3V3" gate="A1" x="-73.66" y="33.02"/>
 <instance part="X1" gate="G$1" x="-76.2" y="53.34"/>
+<instance part="REG3V3" gate="A1" x="-73.66" y="33.02"/>
 </instances>
 <busses>
 <bus name="U1RX,U1TX,GPIOE1,GPIOE2,GPIOE3">
@@ -9153,11 +9151,12 @@ Based on  the following source:
 <wire x1="-33.02" y1="7.62" x2="-35.56" y2="5.08" width="0.762" layer="92"/>
 </segment>
 </bus>
-<bus name="M1PWM6,M1PWM4,M0PWM6,M0PWM0,M1PWM3">
+<bus name="M1PWM6,M1PWM4,M0PWM1,M0PWM6,M0PWM0">
 <segment>
 <wire x1="45.72" y1="53.34" x2="45.72" y2="40.64" width="0.762" layer="92"/>
 <wire x1="45.72" y1="40.64" x2="45.72" y2="38.1" width="0.762" layer="92"/>
-<wire x1="45.72" y1="38.1" x2="45.72" y2="25.4" width="0.762" layer="92"/>
+<wire x1="45.72" y1="38.1" x2="45.72" y2="30.48" width="0.762" layer="92"/>
+<wire x1="45.72" y1="30.48" x2="45.72" y2="25.4" width="0.762" layer="92"/>
 <wire x1="45.72" y1="25.4" x2="43.18" y2="22.86" width="0.762" layer="92"/>
 <wire x1="43.18" y1="35.56" x2="45.72" y2="38.1" width="0.762" layer="92"/>
 <wire x1="43.18" y1="38.1" x2="45.72" y2="40.64" width="0.762" layer="92"/>
@@ -9179,6 +9178,7 @@ Based on  the following source:
 <wire x1="45.72" y1="121.92" x2="43.18" y2="119.38" width="0.762" layer="92"/>
 <wire x1="45.72" y1="142.24" x2="43.18" y2="139.7" width="0.762" layer="92"/>
 <wire x1="45.72" y1="162.56" x2="43.18" y2="160.02" width="0.762" layer="92"/>
+<wire x1="45.72" y1="30.48" x2="43.18" y2="27.94" width="0.762" layer="92"/>
 </segment>
 </bus>
 <bus name="GPIOC5,GPIOC6,GPIOC7">
@@ -9206,8 +9206,7 @@ Based on  the following source:
 <nets>
 <net name="U1RX" class="0">
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="PB0"/>
-<wire x1="-5.08" y1="43.18" x2="-30.48" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="45.72" x2="-30.48" y2="43.18" width="0.1524" layer="91"/>
 <label x="-30.48" y="43.18" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -9223,8 +9222,7 @@ Based on  the following source:
 </net>
 <net name="U1TX" class="0">
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="PB1"/>
-<wire x1="-5.08" y1="38.1" x2="-30.48" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="35.56" x2="-30.48" y2="38.1" width="0.1524" layer="91"/>
 <label x="-30.48" y="38.1" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -9245,15 +9243,15 @@ Based on  the following source:
 <label x="30.48" y="50.8" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="48.26" y1="165.1" x2="63.5" y2="165.1" width="0.1524" layer="91"/>
-<pinref part="SERVO4" gate="G$1" pin="3"/>
-<wire x1="63.5" y1="165.1" x2="66.04" y2="167.64" width="0.1524" layer="91"/>
-<label x="50.8" y="165.1" size="1.778" layer="95"/>
+<pinref part="R23" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="139.7" x2="30.48" y2="139.7" width="0.1524" layer="91"/>
+<label x="30.48" y="139.7" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R24" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="160.02" x2="30.48" y2="160.02" width="0.1524" layer="91"/>
-<label x="30.48" y="160.02" size="1.778" layer="95"/>
+<pinref part="SERVO3" gate="G$1" pin="3"/>
+<wire x1="48.26" y1="144.78" x2="63.5" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="144.78" x2="66.04" y2="147.32" width="0.1524" layer="91"/>
+<label x="50.8" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="M0PWM6" class="0">
@@ -9263,15 +9261,15 @@ Based on  the following source:
 <label x="30.48" y="35.56" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="48.26" y1="124.46" x2="63.5" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="SERVO2" gate="G$1" pin="3"/>
-<wire x1="63.5" y1="124.46" x2="66.04" y2="127" width="0.1524" layer="91"/>
-<label x="50.8" y="124.46" size="1.778" layer="95"/>
+<pinref part="R24" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="160.02" x2="30.48" y2="160.02" width="0.1524" layer="91"/>
+<label x="30.48" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R22" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="119.38" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
-<label x="30.48" y="119.38" size="1.778" layer="95"/>
+<pinref part="SERVO4" gate="G$1" pin="3"/>
+<wire x1="48.26" y1="165.1" x2="63.5" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="165.1" x2="66.04" y2="167.64" width="0.1524" layer="91"/>
+<label x="50.8" y="165.1" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="M1PWM4" class="0">
@@ -9281,15 +9279,15 @@ Based on  the following source:
 <label x="30.48" y="38.1" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="48.26" y1="144.78" x2="63.5" y2="144.78" width="0.1524" layer="91"/>
-<pinref part="SERVO3" gate="G$1" pin="3"/>
-<wire x1="63.5" y1="144.78" x2="66.04" y2="147.32" width="0.1524" layer="91"/>
-<label x="50.8" y="144.78" size="1.778" layer="95"/>
+<pinref part="SERVO2" gate="G$1" pin="3"/>
+<wire x1="48.26" y1="124.46" x2="63.5" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="124.46" x2="66.04" y2="127" width="0.1524" layer="91"/>
+<label x="50.8" y="124.46" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R23" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="139.7" x2="30.48" y2="139.7" width="0.1524" layer="91"/>
-<label x="30.48" y="139.7" size="1.778" layer="95"/>
+<pinref part="R22" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="119.38" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
+<label x="30.48" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="M0PWM0" class="0">
@@ -9299,37 +9297,15 @@ Based on  the following source:
 <label x="30.48" y="22.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="48.26" y1="101.6" x2="63.5" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="SERVO1" gate="G$1" pin="3"/>
-<wire x1="63.5" y1="101.6" x2="66.04" y2="104.14" width="0.1524" layer="91"/>
-<label x="50.8" y="101.6" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R21" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="96.52" x2="30.48" y2="96.52" width="0.1524" layer="91"/>
-<label x="30.48" y="96.52" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="M1PWM3" class="0">
-<segment>
-<pinref part="TIVA" gate="TIVA" pin="PA7"/>
-<wire x1="-5.08" y1="7.62" x2="-7.62" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="7.62" x2="-10.16" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="-10.16" y1="5.08" x2="-10.16" y2="-2.54" width="0.1524" layer="91"/>
-<wire x1="-10.16" y1="-2.54" x2="-7.62" y2="-5.08" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="-5.08" x2="43.18" y2="-5.08" width="0.1524" layer="91"/>
-<label x="30.48" y="-5.08" size="1.778" layer="95"/>
-</segment>
-<segment>
-<wire x1="48.26" y1="78.74" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="SERVO0" gate="G$1" pin="3"/>
-<wire x1="63.5" y1="78.74" x2="66.04" y2="81.28" width="0.1524" layer="91"/>
-<label x="50.8" y="78.74" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="R20" gate="G$1" pin="2"/>
 <wire x1="43.18" y1="73.66" x2="30.48" y2="73.66" width="0.1524" layer="91"/>
 <label x="30.48" y="73.66" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="SERVO0" gate="G$1" pin="3"/>
+<wire x1="48.26" y1="78.74" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="78.74" x2="66.04" y2="81.28" width="0.1524" layer="91"/>
+<label x="50.8" y="78.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIOC5" class="0">
@@ -9368,8 +9344,7 @@ Based on  the following source:
 </net>
 <net name="GPIOE1" class="0">
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="PE1"/>
-<wire x1="-30.48" y1="20.32" x2="-2.54" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="20.32" x2="-10.16" y2="22.86" width="0.1524" layer="91"/>
 <label x="-27.94" y="20.32" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -9380,8 +9355,7 @@ Based on  the following source:
 </net>
 <net name="GPIOE2" class="0">
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="PE2"/>
-<wire x1="-30.48" y1="15.24" x2="-2.54" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="15.24" x2="-10.16" y2="17.78" width="0.1524" layer="91"/>
 <label x="-27.94" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -9392,8 +9366,7 @@ Based on  the following source:
 </net>
 <net name="GPIOE3" class="0">
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="PE3"/>
-<wire x1="-30.48" y1="10.16" x2="-2.54" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="10.16" x2="-10.16" y2="12.7" width="0.1524" layer="91"/>
 <label x="-27.94" y="10.16" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -9491,10 +9464,6 @@ Based on  the following source:
 <pinref part="GND24" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="GND@2"/>
-<pinref part="GND26" gate="1" pin="GND"/>
-</segment>
-<segment>
 <pinref part="TIVA" gate="TIVA" pin="GND@1"/>
 <pinref part="GND27" gate="1" pin="GND"/>
 </segment>
@@ -9532,12 +9501,12 @@ Based on  the following source:
 <pinref part="GND34" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="GND21" gate="1" pin="GND"/>
-<pinref part="REG3V3" gate="A1" pin="GND"/>
-</segment>
-<segment>
 <pinref part="GND19" gate="1" pin="GND"/>
 <pinref part="X1" gate="G$1" pin="4"/>
+</segment>
+<segment>
+<pinref part="GND21" gate="1" pin="GND"/>
+<pinref part="REG3V3" gate="A1" pin="GND"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -9709,60 +9678,60 @@ Based on  the following source:
 <net name="N$13" class="0">
 <segment>
 <pinref part="T6" gate="G1" pin="C"/>
-<pinref part="LEDM1PWM3" gate="G$1" pin="C"/>
+<pinref part="LEDM0PWM0" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
-<pinref part="LEDM1PWM3" gate="G$1" pin="A"/>
+<pinref part="LEDM0PWM0" gate="G$1" pin="A"/>
 <pinref part="R10" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$15" class="0">
 <segment>
 <pinref part="T7" gate="G1" pin="C"/>
-<pinref part="LEDM0PWM0" gate="G$1" pin="C"/>
+<pinref part="LEDM0PWM1" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$16" class="0">
 <segment>
-<pinref part="LEDM0PWM0" gate="G$1" pin="A"/>
+<pinref part="LEDM0PWM1" gate="G$1" pin="A"/>
 <pinref part="R11" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$17" class="0">
 <segment>
 <pinref part="T8" gate="G1" pin="C"/>
-<pinref part="LEDM0PWM6" gate="G$1" pin="C"/>
+<pinref part="LEDM1PWM4" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$18" class="0">
 <segment>
-<pinref part="LEDM0PWM6" gate="G$1" pin="A"/>
+<pinref part="LEDM1PWM4" gate="G$1" pin="A"/>
 <pinref part="R12" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$19" class="0">
 <segment>
 <pinref part="T9" gate="G1" pin="C"/>
-<pinref part="LEDM1PWM4" gate="G$1" pin="C"/>
+<pinref part="LEDM1PWM6" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$20" class="0">
 <segment>
-<pinref part="LEDM1PWM4" gate="G$1" pin="A"/>
+<pinref part="LEDM1PWM6" gate="G$1" pin="A"/>
 <pinref part="R13" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$21" class="0">
 <segment>
 <pinref part="T10" gate="G1" pin="C"/>
-<pinref part="LEDM1PWM6" gate="G$1" pin="C"/>
+<pinref part="LEDM0PWM6" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$22" class="0">
 <segment>
-<pinref part="LEDM1PWM6" gate="G$1" pin="A"/>
+<pinref part="LEDM0PWM6" gate="G$1" pin="A"/>
 <pinref part="R14" gate="G$1" pin="1"/>
 </segment>
 </net>
@@ -9874,9 +9843,6 @@ Based on  the following source:
 </net>
 <net name="GPIOE5" class="0">
 <segment>
-<pinref part="TIVA" gate="TIVA" pin="PE5"/>
-<wire x1="-5.08" y1="27.94" x2="-7.62" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="27.94" x2="-10.16" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-10.16" y1="30.48" x2="-10.16" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="LCD" gate="G$1" pin="1"/>
 <label x="-7.62" y="78.74" size="1.778" layer="95" rot="R90"/>
@@ -9964,6 +9930,22 @@ Based on  the following source:
 <wire x1="-78.74" y1="58.42" x2="-91.44" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="SWITCH" gate="G$1" pin="1"/>
 <pinref part="X1" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="M0PWM1" class="0">
+<segment>
+<pinref part="TIVA" gate="TIVA" pin="PB7"/>
+<wire x1="43.18" y1="27.94" x2="30.48" y2="27.94" width="0.1524" layer="91"/>
+<label x="30.48" y="27.94" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R21" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="96.52" x2="30.48" y2="96.52" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SERVO1" gate="G$1" pin="3"/>
+<wire x1="48.26" y1="101.6" x2="63.5" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="101.6" x2="66.04" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
