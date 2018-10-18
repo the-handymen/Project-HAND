@@ -244,7 +244,7 @@ difference(){
     
   #cylinder(
     //HEIGHT
-    THICK * SCALE, //wall thickness, adjusted for scale
+    (THICK + 1) * SCALE, //wall thickness, adjusted for scale
     
     //RADIUS
     r = PS_RADIUS * SCALE); //radius, adjusted for scale
@@ -259,21 +259,52 @@ difference(){
     (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH))))) * SCALE, //slope from base to top on y axis
     
     //Z TRANSLATION
-    (HEIGHT - THICK) * SCALE]) //embed the 
+    (HEIGHT - THICK) * SCALE]) //embed the nub into the top
     
-  cube(THICK * SCALE);
+  #cube(THICK * SCALE); //cube based on wall thickness
   
   //NUB 2
   translate([
     //X TRANSLATION
-    (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))) + (TOPLENGTH / 2 - THICK / 2)) * SCALE, //halfway down the length of the top
+    (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))) //slope from base to top on x axis 
+    + (TOPLENGTH / 2 - THICK / 2)) * SCALE, //halfway down the length of the top
     
     //Y TRANSLATION
-    (BOTWIDTH - THICK -(HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))) * SCALE,
+    (BOTWIDTH - THICK //far base wall
+    -(HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))) * SCALE, //slope from base to top on y axis
     
     //Z TRANSLATION
-    (HEIGHT - THICK) * SCALE
+    (HEIGHT - THICK) * SCALE //embed the nub into the top
     ])
     
-  cube(THICK * SCALE);
+  #cube(THICK * SCALE); //cube based on wall thickness
+  
+  //NUB 3
+  translate([
+    //X TRANSLATION
+    (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH))))) * SCALE, //slope from base to top on x axis
+    
+    //Y TRANSLATION
+    ((TOPWIDTH / 2) //halfway down the width of the top
+    + (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH))))) - THICK / 2) * SCALE, //slope from base to top on y axis
+    
+    //Z TRANSLATION
+    (HEIGHT - THICK) * SCALE]) //embed the nub into the top
+    
+  #cube(THICK * SCALE); //cube based on wall thickness
+  
+  //NUB 4
+  translate([
+    //X TRANSLATION
+    (BOTLENGTH - THICK //far base wall
+    -(HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))))) * SCALE, //slope from base to top on x axis
+    
+    //Y TRANSLATION
+    ((TOPWIDTH / 2) //halfway down the width of the top
+    + (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH))))) - THICK / 2) * SCALE, //slope from base to top on y axis
+    
+    //Z TRANSLATION
+    (HEIGHT - THICK) * SCALE]) //embed the nub into the top
+    
+  #cube(THICK * SCALE); //cube based on wall thickness
 }
