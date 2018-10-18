@@ -159,7 +159,7 @@ difference()
     ((F_RADIUS + 2) * 2) / 2, //half of connector hole cutout length
    
     //Z-TRANSLATION
-    F_RADIUS]) //top of bottom sphere cutout
+    F_RADIUS + F_THICK  ]) //top of bottom sphere cutout
     
   rotate(
     //ANGLE
@@ -201,11 +201,55 @@ difference()
    
     //HEIGHT
     F_RADIUS]); //radius of finger 
-  
-  #sphere(
+    
+  //BOTTOM CUTOUT  
+  translate([
+    //X TRANSLATION
+    0,
+    
+    //Y TRANSLATION
+    F_RADIUS,
+    
+    //Z TRANSLATION
+    -H_RADIUS])
+    
+  rotate(
+    //ANGLE
+    90,
+    
+    //AXIS
+    [1,0,0]) //rotate about the x axis
+  #cylinder(
     //RESOLUTION
     $fn = RESOLUTION,
     
-    //RADIUS
-    F_RADIUS); //radius of finger
+    //HEIGHT
+    F_RADIUS * 2,
+    
+    //BOTTOM RADIUS
+    F_RADIUS,
+   
+    //TOP RADIUS
+    F_RADIUS);
+  
+  //FRONT CUTOUT
+  translate([
+    //X TRANSLATION
+    0,
+    
+    //Y TRANSLATION
+    -F_RADIUS, //translate so entire length is cut out
+    
+    //Z TRANSLATION
+    0])
+    
+  #cube([
+  //LENGTH
+  F_RADIUS,
+  
+  //WIDTH
+  F_RADIUS * 2,
+  
+  //HEIGHT
+  F_RADIUS - H_RADIUS]);
 }
