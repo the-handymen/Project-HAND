@@ -9531,6 +9531,8 @@ Based on the following sources:
 <segment>
 <wire x1="-15.24" y1="45.72" x2="-30.48" y2="43.18" width="0.1524" layer="91"/>
 <label x="-30.48" y="43.18" size="1.778" layer="95"/>
+<pinref part="TIVA" gate="TIVA" pin="PD6"/>
+<wire x1="-15.24" y1="45.72" x2="27.94" y2="15.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="XB1" gate="G$1" pin="DOUT"/>
@@ -9547,6 +9549,8 @@ Based on the following sources:
 <segment>
 <wire x1="-15.24" y1="35.56" x2="-30.48" y2="38.1" width="0.1524" layer="91"/>
 <label x="-30.48" y="38.1" size="1.778" layer="95"/>
+<pinref part="TIVA" gate="TIVA" pin="PD7"/>
+<wire x1="-15.24" y1="35.56" x2="27.94" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="XB1" gate="G$1" pin="DIN/!CONFIG"/>
