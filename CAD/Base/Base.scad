@@ -72,7 +72,6 @@ PS_RADIUS = 3;
 PS_XOFF = 35;
 PS_YOFF = 8;
 
-
 difference(){ 
   //BASE SHAPE  
   centered_fustrum(
@@ -249,4 +248,32 @@ difference(){
     
     //RADIUS
     r = PS_RADIUS * SCALE); //radius, adjusted for scale
+  
+  //NUB 1
+  translate([
+    //X TRANSLATION
+    (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))) //slope from base to top on x axis
+    + (TOPLENGTH / 2 - THICK / 2)) * SCALE, //halfway down the length of the top
+    
+    //Y TRANSLATION
+    (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH))))) * SCALE, //slope from base to top on y axis
+    
+    //Z TRANSLATION
+    (HEIGHT - THICK) * SCALE]) //embed the 
+    
+  cube(THICK * SCALE);
+  
+  //NUB 2
+  translate([
+    //X TRANSLATION
+    (HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH)))) + (TOPLENGTH / 2 - THICK / 2)) * SCALE, //halfway down the length of the top
+    
+    //Y TRANSLATION
+    (BOTWIDTH - THICK -(HEIGHT * (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))) * SCALE,
+    
+    //Z TRANSLATION
+    (HEIGHT - THICK) * SCALE
+    ])
+    
+  cube(THICK * SCALE);
 }
