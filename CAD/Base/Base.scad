@@ -1,14 +1,9 @@
 use <fustrum.scad>
-
-//scale of the full design
-SCALE = 1;
+include <connect.scad>
 
 ///////////////////////////////////
 ////////////   BASE   /////////////
 ///////////////////////////////////
-
-//wall thickness
-THICK = 3;
 
 //top thickness
 TOPTHICK = 0;
@@ -22,10 +17,6 @@ HEIGHT = 20;
 //dimensions of the bottom layer
 BOTLENGTH = 100; //length
 BOTWIDTH = 70;   //width
-
-//dimensions of the top layer
-TOPLENGTH = 80; //length
-TOPWIDTH = 42;  //width
 
 ///////////////////////////////////
 /////////////   LCD   /////////////
@@ -71,6 +62,12 @@ PS_RADIUS = 3;
 //placement on base wall (offset from 0,0)
 PS_XOFF = 35;
 PS_YOFF = 8;
+
+///////////////////////////////////
+//////// SERVO WIRE HOLES /////////
+///////////////////////////////////
+//radius
+SH_RADIUS = 3;
 
 difference(){ 
   //BASE SHAPE  
@@ -307,4 +304,34 @@ difference(){
     (HEIGHT - THICK) * SCALE]) //embed the nub into the top
     
   #cube(THICK * SCALE); //cube based on wall thickness
-}
+  
+  //SERVO HOLES
+  for(i = [1:5])
+  {
+  translate([
+    //X TRANSLATION
+    (BOTLENGTH - (BOTLENGTH - TOPLENGTH) / 2 - 3 //start of top layer
+    - i * (TOPLENGTH - 10 * SH_RADIUS )/ 6 - 2 * (i - 1) * SH_RADIUS) * SCALE, //leave even spacing
+    
+    //Y TRANSLATION
+    (BOTWIDTH - (HEIGHT - SH_RADIUS) * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH))))) * SCALE, //move to center of the side wall
+    
+    //Z TRANSLATION
+    (HEIGHT / 2  - SH_RADIUS)* SCALE]) //move to center of side wall
+  
+  rotate(
+  //ANGLE
+  atan((BOTWIDTH - TOPWIDTH) / 2 / HEIGHT) - 90, //angle of wall cutout is placed on
+ 
+  //AXIS
+  [1, 0, 0]) //x axis
+  
+  #cylinder(
+  //HEIGHT
+  (THICK + 1) * SCALE, //wall thickness
+ 
+  //RADIUS
+  r = SH_RADIUS * SCALE);
+  }
+  }
+  

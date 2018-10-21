@@ -1,6 +1,9 @@
 //scale of the full design
 SCALE = 1;
 
+//open (1) or closed (0) top?
+OPEN = 1;
+
 //resolution of the design (~50 MAX)
 RESOLUTION =25;
 
@@ -118,37 +121,7 @@ difference()
       //HEIGHT (z-dimension)
       TOTAL_HEIGHT - F_RADIUS/2]); //bottom to half-way up the top sphere
   }
- 
-  //TOP CONNECTOR HOLE
-  translate([
-    //X-TRANSLATION
-    0,
-    
-    //Y-TRANSLATION
-    ((F_RADIUS + 2) * 2) / 2, //half of connector hole cutout length
- 
-    //Z-TRANSLATION
-    TOTAL_HEIGHT - F_RADIUS / 2]) //halfway up the top sphere
   
-  rotate(
-    //ANGLE
-    90, //cut the hole sideways, through the cylinder
- 
-    //AXIS
-    [1,0,0]) //x-axis
-  
-  #cylinder(
-    //RESOLUTION
-    $fn = RESOLUTION,
-  
-    //HEIGHT
-    (F_RADIUS + 2) * 2, //diameter of finger, with extra length to ensure cutout
-  
-    //BOTTOM RADIUS
-    H_RADIUS, //connector hole radius
-  
-    //TOP RADIUS
-    H_RADIUS);//connector hole radius
   
   //BOTTOM CONNECTOR HOLE
   translate([
@@ -181,26 +154,60 @@ difference()
     //TOP RADIUS
     H_RADIUS); //connector hole radius
   
-  //CONNECTOR CUTOUT
-  translate([
-    //X-TRANSLATION
-    -F_RADIUS / 2, //half of finger radius
+  if(OPEN)
+  {
+    //TOP CONNECTOR HOLE
+    translate([
+      //X-TRANSLATION
+      0,
     
-    //Y-TRANSLATION
-    -1.5 * C_RADIUS / 2, //half of cutout length
+      //Y-TRANSLATION
+      ((F_RADIUS + 2) * 2) / 2, //half of connector hole cutout length
+ 
+      //Z-TRANSLATION
+      TOTAL_HEIGHT - F_RADIUS / 2]) //halfway up the top sphere
+  
+    rotate(
+      //ANGLE
+      90, //cut the hole sideways, through the cylinder
+ 
+      //AXIS
+      [1,0,0]) //x-axis
+  
+    #cylinder(
+      //RESOLUTION
+      $fn = RESOLUTION,
+  
+      //HEIGHT
+      (F_RADIUS + 2) * 2, //diameter of finger, with extra length to ensure cutout
+  
+      //BOTTOM RADIUS
+      H_RADIUS, //connector hole radius
+  
+      //TOP RADIUS
+      H_RADIUS);//connector hole radius
+    
+    //CONNECTOR CUTOUT
+    translate([
+      //X-TRANSLATION
+      -F_RADIUS / 2, //half of finger radius
+    
+      //Y-TRANSLATION
+      -1.5 * C_RADIUS / 2, //half of cutout length
    
-    //Z-TRANSLATION
-    TOTAL_HEIGHT - F_RADIUS/2 - H_RADIUS]) //cut down to bottom of top connector hole
+      //Z-TRANSLATION
+      TOTAL_HEIGHT - F_RADIUS/2 - H_RADIUS]) //cut down to bottom of top connector hole
     
-  #cube([
-    //LENGTH (x-axis)
-    F_RADIUS * 2, //diameter of finger
+    #cube([
+      //LENGTH (x-axis)
+      F_RADIUS * 2, //diameter of finger
     
-    //WIDTH (y-axis)
-    1.5 * C_RADIUS, //width of connector, with extra space
+      //WIDTH (y-axis)
+      1.5 * C_RADIUS, //width of connector, with extra space
    
-    //HEIGHT
-    F_RADIUS]); //radius of finger 
+      //HEIGHT
+      F_RADIUS]); //radius of finger 
+  } 
     
   //BOTTOM CUTOUT  
   translate([
