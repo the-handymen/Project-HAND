@@ -1,26 +1,31 @@
 include <connect.scad>
 
 //finger radius
-F_RADIUS = 10;
+F_RADIUS = 5;
 
 //servo cutout length
-S_LENGTH = 5;
+S_LENGTH = 20;
 
-//servo cutout height
-S_HEIGHT = 10;
+//servo cutout width
+S_WIDTH = 10;
+
+//servo cutout height displacement
+S_HEIGHT = 15;
 
 //servo screw hole radius
 S_HRADIUS = 1;
+
+//seperation of servo cutout and servo hole
+S_HSEP = 1;
+
+//offset of screw holes over servo cutouts
+S_HIN = 1;
 
 //height of the hand 
 H_HEIGHT = 50;
 
 //thickness of the hand
 H_THICK = 3;
-
-//width of the thumb connector
-T_WIDTH = 20;
-
   
 difference()
 {
@@ -125,10 +130,11 @@ difference()
       //HEIGHT (z axis)
       THICK * 2 * SCALE]); //double base thickness
   }
-    
+  
+  //HAND BASE CUTOUT
   translate([
     //X TRANSLATION
-    T_WIDTH * SCALE,
+    F_RADIUS * 2 * SCALE,
   
     //Y TRANSLATION
     0,
@@ -138,12 +144,141 @@ difference()
   
   #cube([
     //LENGTH (x axis)
-    (TOPLENGTH - T_WIDTH) * SCALE,
+    (TOPLENGTH - F_RADIUS * 2) * SCALE,
     
     //WIDTH (y axis)
-    (TOPWIDTH - F_RADIUS) * SCALE,
+    (TOPWIDTH - F_RADIUS * 2) * SCALE,
     
     //HEIGHT (z axis)
     (H_HEIGHT - THICK) * SCALE]);
+    
+  for(i = [1:4])
+  {
+    //servo main cutout
+    translate([
+    //X TRANSLATION
+    (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+   
+    //Y TRANSLATION
+    (TOPWIDTH - F_RADIUS * 2) * SCALE,
+    
+    //Z TRANSLATION
+    S_HEIGHT * SCALE
+    ])
+    
+    #cube([
+      //LENGTH (x axis)
+      S_WIDTH * SCALE,
+    
+      //WIDTH (y axis)
+      F_RADIUS * 2 * SCALE,
+    
+      //HEIGHT (z axis)
+      S_LENGTH * SCALE]);
+      
+      
+    //servo screw hole 1
+    translate([
+      //X TRANSLATION
+      (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN) * SCALE,
+      
+      //Y TRANSLATION
+      (TOPWIDTH - F_RADIUS * 2) * SCALE,
+      
+      //Z TRANSLATION
+      (S_HEIGHT + S_LENGTH + S_HSEP + S_HRADIUS) * SCALE])
+      
+    rotate(
+      //ANGLE
+      -90,
+      
+      //AXIS
+      [1,0,0])
+      
+    #cylinder(
+      //HEIGHT
+      F_RADIUS * 2 * SCALE, //wall thickness
+ 
+      //RADIUS
+      r = S_HRADIUS * SCALE);
+      
+      
+    //servo screw hole 2
+    translate([
+      //X TRANSLATION
+      (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN) * SCALE,
+      
+      //Y TRANSLATION
+      (TOPWIDTH - F_RADIUS * 2) * SCALE,
+      
+      //Z TRANSLATION
+      (S_HEIGHT - S_HSEP - S_HRADIUS) * SCALE])
+      
+    rotate(
+      //ANGLE
+      -90,
+      
+      //AXIS
+      [1,0,0])
+      
+    #cylinder(
+      //HEIGHT
+      F_RADIUS * 2 * SCALE, //wall thickness
+ 
+      //RADIUS
+      r = S_HRADIUS * SCALE);
+      
+      
+    //servo screw hole 3
+    translate([
+      //X TRANSLATION
+      (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN) * SCALE,
+      
+      //Y TRANSLATION
+      (TOPWIDTH - F_RADIUS * 2) * SCALE,
+      
+      //Z TRANSLATION
+      (S_HEIGHT - S_HSEP - S_HRADIUS) * SCALE])
+      
+    rotate(
+      //ANGLE
+      -90,
+      
+      //AXIS
+      [1,0,0])
+      
+    #cylinder(
+      //HEIGHT
+      F_RADIUS * 2 * SCALE, //wall thickness
+ 
+      //RADIUS
+      r = S_HRADIUS * SCALE);
+      
+      
+    //servo screw hole 4
+    translate([
+      //X TRANSLATION
+      (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN) * SCALE,
+      
+      //Y TRANSLATION
+      (TOPWIDTH - F_RADIUS * 2) * SCALE,
+      
+      //Z TRANSLATION
+      (S_HEIGHT + S_LENGTH + S_HSEP + S_HRADIUS) * SCALE])
+      
+    rotate(
+      //ANGLE
+      -90,
+      
+      //AXIS
+      [1,0,0])
+      
+    #cylinder(
+      //HEIGHT
+      F_RADIUS * 2 * SCALE, //wall thickness
+ 
+      //RADIUS
+      r = S_HRADIUS * SCALE);
+  }
 }
   
