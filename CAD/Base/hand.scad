@@ -16,20 +16,25 @@ S_HEIGHT = 15;
 S_FLENGTH = 12;
 
 //thickness of front servo cutout
-S_FTHICK = 2;
+S_FTHICK = 5;
 
 //servo screw hole radius
 S_HRADIUS = 1;
 
-//seperation of servo cutout and servo hole
-S_HSEP = 1;
-
 //offset of screw holes over servo cutouts
 S_HIN = 2;
 
+//length of servo wire cutout
 S_WLENGTH = 3;
 
+//width of servo wire cutout
 S_WWIDTH = 2;
+
+//radius of servo wire hole
+S_WRADIUS = 2;
+
+//y offset of servo wire hole
+S_WYOFF = 20;
 
 //height of the hand 
 H_HEIGHT = 50;
@@ -144,7 +149,7 @@ difference()
   //HAND BASE CUTOUT
   translate([
     //X TRANSLATION
-    F_RADIUS * 2 * SCALE,
+    0,
   
     //Y TRANSLATION
     0,
@@ -171,7 +176,7 @@ difference()
         //servo main cutout
         translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) - S_WIDTH) * SCALE,
      
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -193,7 +198,7 @@ difference()
         //servo front cutout bottom
         translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) - S_WIDTH) * SCALE,
      
         //Y TRANSLATION
         (TOPWIDTH - S_FTHICK) * SCALE,
@@ -215,7 +220,7 @@ difference()
         //servo front cutout bottom
         translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) - S_WIDTH) * SCALE,
      
         //Y TRANSLATION
         (TOPWIDTH - S_FTHICK) * SCALE,
@@ -238,7 +243,7 @@ difference()
       //servo screw hole 1
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -264,7 +269,7 @@ difference()
       //servo screw hole 2
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -290,7 +295,7 @@ difference()
       //servo screw hole 3
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -316,7 +321,7 @@ difference()
       //servo screw hole 4
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -337,23 +342,24 @@ difference()
    
         //RADIUS
         r = S_HRADIUS * SCALE);
-        
+      
+      //wire guide cutout 
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH / 2 - S_WLENGTH / 2) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH / 2 - S_WLENGTH / 2 - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
         
         //Z TRANSLATION
-        (S_HEIGHT + S_FLENGTH / 4) * SCALE])
+        (S_HEIGHT + S_LENGTH / 4 - S_WWIDTH) * SCALE])
         
       #cube([
         //LENGTH (x axis)
         S_WLENGTH * SCALE,
         
         //WIDTH (y axis)
-        (F_RADIUS - S_FTHICK) * SCALE,
+        (F_RADIUS * 2 - S_FTHICK) * SCALE,
         
         //HEIGHT (z axis)
         S_WWIDTH * SCALE]);
@@ -365,7 +371,7 @@ difference()
         //servo main cutout
         translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) - S_WIDTH) * SCALE,
      
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -387,7 +393,7 @@ difference()
         //servo front cutout bottom
         translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) - S_WIDTH) * SCALE,
      
         //Y TRANSLATION
         (TOPWIDTH - S_FTHICK) * SCALE,
@@ -409,7 +415,7 @@ difference()
         //servo front cutout bottom
         translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5)) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) - S_WIDTH) * SCALE,
      
         //Y TRANSLATION
         (TOPWIDTH - S_FTHICK) * SCALE,
@@ -432,7 +438,7 @@ difference()
       //servo screw hole 1
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -458,7 +464,7 @@ difference()
       //servo screw hole 2
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_HRADIUS + S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -484,7 +490,7 @@ difference()
       //servo screw hole 3
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -510,7 +516,7 @@ difference()
       //servo screw hole 4
       translate([
         //X TRANSLATION
-        (F_RADIUS * 2 + i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN) * SCALE,
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH - S_HRADIUS - S_HIN - S_WIDTH) * SCALE,
         
         //Y TRANSLATION
         (TOPWIDTH - F_RADIUS * 2) * SCALE,
@@ -531,7 +537,47 @@ difference()
    
         //RADIUS
         r = S_HRADIUS * SCALE);
+        
+        
+      //wire guide cutout 
+      translate([
+        //X TRANSLATION
+        (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH / 2 - S_WLENGTH / 2 - S_WIDTH) * SCALE,
+        
+        //Y TRANSLATION
+        (TOPWIDTH - F_RADIUS * 2) * SCALE,
+        
+        //Z TRANSLATION
+        (S_HEIGHT - S_LENGTH / 4 - S_WWIDTH)  * SCALE])
+        
+      #cube([
+        //LENGTH (x axis)
+        S_WLENGTH * SCALE,
+        
+        //WIDTH (y axis)
+        (F_RADIUS * 2 - S_FTHICK) * SCALE,
+        
+        //HEIGHT (z axis)
+        S_WWIDTH * SCALE]);
     }
+    
+    //servo wire hole
+    translate([
+      //X TRANSLATION
+      (i * ((TOPLENGTH - S_WIDTH) / 5) + S_WIDTH / 2 - S_WIDTH) * SCALE,
+    
+      //Y TRANSLATION
+      S_WYOFF * SCALE,
+    
+      //Z TRANSLATION
+      0])
+    
+    #cylinder(
+      //HEIGHT
+      THICK * SCALE,
+    
+      //radius
+      r = S_WRADIUS * SCALE);
   }
 }
   

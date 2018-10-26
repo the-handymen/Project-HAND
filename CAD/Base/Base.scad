@@ -63,12 +63,6 @@ PS_RADIUS = 3;
 PS_XOFF = 35;
 PS_YOFF = 8;
 
-///////////////////////////////////
-//////// SERVO WIRE HOLES /////////
-///////////////////////////////////
-//radius
-SH_RADIUS = 3;
-
 difference(){ 
   //BASE SHAPE  
   centered_fustrum(
@@ -305,33 +299,5 @@ difference(){
     
   #cube(THICK * SCALE); //cube based on wall thickness
   
-  //SERVO HOLES
-  for(i = [1:5])
-  {
-  translate([
-    //X TRANSLATION
-    (BOTLENGTH - (BOTLENGTH - TOPLENGTH) / 2 - 3 //start of top layer
-    - i * (TOPLENGTH - 10 * SH_RADIUS )/ 6 - 2 * (i - 1) * SH_RADIUS) * SCALE, //leave even spacing
-    
-    //Y TRANSLATION
-    (BOTWIDTH - (HEIGHT - SH_RADIUS) * (tan(90 - atan(2 * HEIGHT / (BOTLENGTH - TOPLENGTH))))) * SCALE, //move to center of the side wall
-    
-    //Z TRANSLATION
-    (HEIGHT / 2  - SH_RADIUS)* SCALE]) //move to center of side wall
-  
-  rotate(
-  //ANGLE
-  atan((BOTWIDTH - TOPWIDTH) / 2 / HEIGHT) - 90, //angle of wall cutout is placed on
- 
-  //AXIS
-  [1, 0, 0]) //x axis
-  
-  #cylinder(
-  //HEIGHT
-  (THICK + 1) * SCALE, //wall thickness
- 
-  //RADIUS
-  r = SH_RADIUS * SCALE);
-  }
   }
   
