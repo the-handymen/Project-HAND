@@ -1,5 +1,5 @@
 //scale of the full design
-SCALE = 1;
+SCALE = 0.5;
 
 //open (1) or closed (0) top?
 OPEN = 1;
