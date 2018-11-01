@@ -33,7 +33,7 @@ L_YOFF = 5;  //offset on y-axis
 
 //screw hole
 L_SRADIUS = 2; //screw hole radius
-L_SOFF = 1; //offset from display
+L_SOFF = 2; //offset from display
 
 ///////////////////////////////////
 ///////   ROTARY ENCODER   ////////
@@ -175,6 +175,91 @@ difference(){
                
     //Z TRANSLATION
     (L_YOFF + L_WIDTH + L_SOFF) * SCALE])//y offset, adjusted for scale
+               
+  rotate(
+    //ANGLE
+    -180 + atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)), //angle of the wall cutout is placed on
+    
+    //AXIS
+    [1, 0, 0]) //x-axis
+          
+  #cylinder(
+    //HEIGHT
+    (THICK + 1) * SCALE, //wall thickness, adjusted for scale
+    
+    //RADIUS
+    r = L_SRADIUS * SCALE); //radius, adjusted for scale
+    
+    
+    
+  //LCD TOP RIGHT HOLE
+  translate([
+    //X TRANSLATION
+    (L_XOFF + L_LENGTH + L_SOFF) * SCALE, //x offset, adjusted for scale
+               
+    //Y TRANSLATION
+    (-1 + (L_YOFF + L_WIDTH + L_SOFF) *                                       //y offset
+    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))//move the cutout along the sloped wall
+    * SCALE,                                             //adjust for scale
+               
+    //Z TRANSLATION
+    (L_YOFF + L_WIDTH + L_SOFF) * SCALE])//y offset, adjusted for scale
+               
+  rotate(
+    //ANGLE
+    -180 + atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)), //angle of the wall cutout is placed on
+    
+    //AXIS
+    [1, 0, 0]) //x-axis
+          
+  #cylinder(
+    //HEIGHT
+    (THICK + 1) * SCALE, //wall thickness, adjusted for scale
+    
+    //RADIUS
+    r = L_SRADIUS * SCALE); //radius, adjusted for scale
+  
+  
+  //LCD BOTTOM RIGHT HOLE
+  translate([
+    //X TRANSLATION
+    (L_XOFF + L_LENGTH + L_SOFF) * SCALE, //x offset, adjusted for scale
+               
+    //Y TRANSLATION
+    (-1 + (L_YOFF - L_SOFF) *                                       //y offset
+    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))//move the cutout along the sloped wall
+    * SCALE,                                             //adjust for scale
+               
+    //Z TRANSLATION
+    (L_YOFF - L_SOFF) * SCALE])//y offset, adjusted for scale
+               
+  rotate(
+    //ANGLE
+    -180 + atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)), //angle of the wall cutout is placed on
+    
+    //AXIS
+    [1, 0, 0]) //x-axis
+          
+  #cylinder(
+    //HEIGHT
+    (THICK + 1) * SCALE, //wall thickness, adjusted for scale
+    
+    //RADIUS
+    r = L_SRADIUS * SCALE); //radius, adjusted for scale
+  
+  
+  //LCD BOTTOM LEFT HOLE
+  translate([
+    //X TRANSLATION
+    (L_XOFF - L_SOFF) * SCALE, //x offset, adjusted for scale
+               
+    //Y TRANSLATION
+    (-1 + (L_YOFF - L_SOFF) *                                       //y offset
+    (tan(90 - atan(2 * HEIGHT / (BOTWIDTH - TOPWIDTH)))))//move the cutout along the sloped wall
+    * SCALE,                                             //adjust for scale
+               
+    //Z TRANSLATION
+    (L_YOFF - L_SOFF) * SCALE])//y offset, adjusted for scale
                
   rotate(
     //ANGLE
