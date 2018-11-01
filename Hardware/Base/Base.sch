@@ -157,32 +157,32 @@
 <library name="tiva-board">
 <packages>
 <package name="TIVA-BOARD">
-<wire x1="-25.4" y1="-33.02" x2="27.94" y2="-33.02" width="0.127" layer="51"/>
-<wire x1="27.94" y1="-33.02" x2="27.94" y2="33.02" width="0.127" layer="51"/>
-<wire x1="27.94" y1="33.02" x2="-25.4" y2="33.02" width="0.127" layer="51"/>
+<wire x1="-25.4" y1="-33.02" x2="25.4" y2="-33.02" width="0.127" layer="51"/>
+<wire x1="25.4" y1="-33.02" x2="25.4" y2="33.02" width="0.127" layer="51"/>
+<wire x1="25.4" y1="33.02" x2="-25.4" y2="33.02" width="0.127" layer="51"/>
 <wire x1="-25.4" y1="33.02" x2="-25.4" y2="-33.02" width="0.127" layer="51"/>
 <pad name="3.3V" x="-22.86" y="2.54" drill="0.8" shape="square"/>
 <pad name="5V" x="-20.32" y="2.54" drill="0.8" shape="square"/>
-<pad name="GND@2" x="25.4" y="2.54" drill="0.8" shape="square"/>
-<pad name="PF2" x="22.86" y="2.54" drill="0.8"/>
-<pad name="PF3" x="22.86" y="0" drill="0.8"/>
-<pad name="PB2" x="25.4" y="0" drill="0.8"/>
-<pad name="PB3" x="22.86" y="-2.54" drill="0.8" rot="R90"/>
-<pad name="PE0" x="25.4" y="-2.54" drill="0.8" rot="R90"/>
-<pad name="PC4" x="22.86" y="-5.08" drill="0.8" rot="R90"/>
-<pad name="PF0" x="25.4" y="-5.08" drill="0.8" rot="R90"/>
-<pad name="PC5" x="22.86" y="-7.62" drill="0.8" rot="R90"/>
-<pad name="PC6" x="22.86" y="-10.16" drill="0.8" rot="R90"/>
-<pad name="PC7" x="22.86" y="-12.7" drill="0.8" rot="R90"/>
-<pad name="PD6" x="22.86" y="-15.24" drill="0.8" rot="R90"/>
-<pad name="PD7" x="22.86" y="-17.78" drill="0.8" rot="R90"/>
-<pad name="PF4" x="22.86" y="-20.32" drill="0.8" rot="R90"/>
-<pad name="PA2" x="25.4" y="-20.32" drill="0.8" rot="R90"/>
-<pad name="PA3" x="25.4" y="-17.78" drill="0.8" rot="R90"/>
-<pad name="PA4" x="25.4" y="-15.24" drill="0.8" rot="R90"/>
-<pad name="PB6" x="25.4" y="-12.7" drill="0.8" rot="R90"/>
-<pad name="PB7" x="25.4" y="-10.16" drill="0.8" rot="R90"/>
-<pad name="RST" x="25.4" y="-7.62" drill="0.8" rot="R90"/>
+<pad name="GND@2" x="22.86" y="2.54" drill="0.8" shape="square"/>
+<pad name="PF2" x="20.32" y="2.54" drill="0.8"/>
+<pad name="PF3" x="20.32" y="0" drill="0.8"/>
+<pad name="PB2" x="22.86" y="0" drill="0.8"/>
+<pad name="PB3" x="20.32" y="-2.54" drill="0.8" rot="R90"/>
+<pad name="PE0" x="22.86" y="-2.54" drill="0.8" rot="R90"/>
+<pad name="PC4" x="20.32" y="-5.08" drill="0.8" rot="R90"/>
+<pad name="PF0" x="22.86" y="-5.08" drill="0.8" rot="R90"/>
+<pad name="PC5" x="20.32" y="-7.62" drill="0.8" rot="R90"/>
+<pad name="PC6" x="20.32" y="-10.16" drill="0.8" rot="R90"/>
+<pad name="PC7" x="20.32" y="-12.7" drill="0.8" rot="R90"/>
+<pad name="PD6" x="20.32" y="-15.24" drill="0.8" rot="R90"/>
+<pad name="PD7" x="20.32" y="-17.78" drill="0.8" rot="R90"/>
+<pad name="PF4" x="20.32" y="-20.32" drill="0.8" rot="R90"/>
+<pad name="PA2" x="22.86" y="-20.32" drill="0.8" rot="R90"/>
+<pad name="PA3" x="22.86" y="-17.78" drill="0.8" rot="R90"/>
+<pad name="PA4" x="22.86" y="-15.24" drill="0.8" rot="R90"/>
+<pad name="PB6" x="22.86" y="-12.7" drill="0.8" rot="R90"/>
+<pad name="PB7" x="22.86" y="-10.16" drill="0.8" rot="R90"/>
+<pad name="RST" x="22.86" y="-7.62" drill="0.8" rot="R90"/>
 <pad name="PB5" x="-22.86" y="0" drill="0.8" rot="R90"/>
 <pad name="PB0" x="-22.86" y="-2.54" drill="0.8" rot="R90"/>
 <pad name="PB1" x="-22.86" y="-5.08" drill="0.8" rot="R90"/>
@@ -201,18 +201,14 @@
 <pad name="PD1" x="-20.32" y="-5.08" drill="0.8" rot="R90"/>
 <pad name="PD0" x="-20.32" y="-2.54" drill="0.8" rot="R90"/>
 <pad name="GND@1" x="-20.32" y="0" drill="0.8" shape="square" rot="R90"/>
-<wire x1="-25.4" y1="33.02" x2="-25.4" y2="-33.02" width="0.127" layer="21"/>
-<wire x1="-25.4" y1="-33.02" x2="27.94" y2="-33.02" width="0.127" layer="21"/>
-<wire x1="27.94" y1="-33.02" x2="27.94" y2="33.02" width="0.127" layer="21"/>
-<wire x1="27.94" y1="33.02" x2="-25.4" y2="33.02" width="0.127" layer="21"/>
 <wire x1="-24.13" y1="3.81" x2="-19.05" y2="3.81" width="0.127" layer="51"/>
 <wire x1="-19.05" y1="3.81" x2="-19.05" y2="-21.59" width="0.127" layer="51"/>
 <wire x1="-19.05" y1="-21.59" x2="-24.13" y2="-21.59" width="0.127" layer="51"/>
 <wire x1="-24.13" y1="-21.59" x2="-24.13" y2="3.81" width="0.127" layer="51"/>
-<wire x1="21.59" y1="3.81" x2="26.67" y2="3.81" width="0.127" layer="51"/>
-<wire x1="26.67" y1="3.81" x2="26.67" y2="-21.59" width="0.127" layer="51"/>
-<wire x1="26.67" y1="-21.59" x2="21.59" y2="-21.59" width="0.127" layer="51"/>
-<wire x1="21.59" y1="-21.59" x2="21.59" y2="3.81" width="0.127" layer="51"/>
+<wire x1="19.05" y1="3.81" x2="24.13" y2="3.81" width="0.127" layer="51"/>
+<wire x1="24.13" y1="3.81" x2="24.13" y2="-21.59" width="0.127" layer="51"/>
+<wire x1="24.13" y1="-21.59" x2="19.05" y2="-21.59" width="0.127" layer="51"/>
+<wire x1="19.05" y1="-21.59" x2="19.05" y2="3.81" width="0.127" layer="51"/>
 <text x="-22.86" y="30.48" size="1.27" layer="51">Tiva Board</text>
 </package>
 </packages>
