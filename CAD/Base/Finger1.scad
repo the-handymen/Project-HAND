@@ -1,5 +1,5 @@
 //scale of the full design
-SCALE = 0.5;
+SCALE = 1;
 
 //open (1) or closed (0) top?
 OPEN = 1;
@@ -11,7 +11,7 @@ RESOLUTION =25;
 TOTAL_HEIGHT = 30 * SCALE;
 
 //radius of the design
-F_RADIUS = 10 * SCALE;
+F_RADIUS = 7.5 * SCALE;
 
 //height of the cylinder portion
 F_HEIGHT = (TOTAL_HEIGHT - F_RADIUS);

@@ -2,8 +2,8 @@
 SCALE = 1;
 
 //dimensions of the connecting layer
-TOPLENGTH = 139.7; //length (4.4in)
-TOPWIDTH = 111.76;  //width (5.5in)
+TOPLENGTH = 132.08; //length (5.2in)
+TOPWIDTH = 106.68;  //width (4.2in)
 
 //wall thickness
-THICK = 10;
+THICK = 5;

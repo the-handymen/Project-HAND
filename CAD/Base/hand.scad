@@ -4,37 +4,37 @@ include <connect.scad>
 ///////////////////////////////////
 
 //servo cutout length (z axis)
-S_LENGTH = 20;
+S_LENGTH = 57;
 
 //servo cutout width (x axis)
-S_WIDTH = 10;
+S_WIDTH = 20;
 
 //servo cutout height displacement
-S_HEIGHT = 15;
+S_HEIGHT = 30;
 
 //front servo plate length (z axis) 
-S_FLENGTH = 12;
+S_FLENGTH = 41;
 
 //thickness of front servo plate
-S_FTHICK = 5;
+S_FTHICK = 2.5;
 
 //servo screw hole radius
-S_HRADIUS = 1;
+S_HRADIUS = 2.25;
 
 //horizontal offset of screw holes on servo plates
-S_HIN = 2;
+S_HIN = 4;
 
 //length of servo wire cutout
-S_WLENGTH = 4;
+S_WLENGTH = 8;
 
 //width of servo wire cutout
-S_WWIDTH = 2;
+S_WWIDTH = 5;
 
 //radius of servo wire hole
-S_WRADIUS = 2;
+S_WRADIUS = 5;
 
 //y offset of servo wire hole
-S_WYOFF = 20;
+S_WYOFF = 60;
 
 
 ///////////////////////////////////
@@ -42,10 +42,10 @@ S_WYOFF = 20;
 ///////////////////////////////////
 
 //height of the hand 
-H_HEIGHT = 50;
+H_HEIGHT = 110;
 
 //thickness of the hand (*2)
-H_THICK = 5;
+H_THICK = 4;
 
 
 ///////////////////////////////////
@@ -56,13 +56,13 @@ H_THICK = 5;
 F_OFF = 8;
 
 //finger radius
-F_RADIUS = 5;
+F_RADIUS = 7.5;
 
 //finger connector width
-F_CRADIUS = 2.5;
+F_CRADIUS = 7.5;
 
 //finger connector hole radius
-F_HRADIUS = 0.5;
+F_HRADIUS = 1;
 
 //finger support thickness
 F_STHICK = 5;
@@ -72,7 +72,7 @@ F_STHICK = 5;
 ///////////////////////////////////
 
 //thumb height offset
-T_ZOFF = 30;
+T_ZOFF = 70;
 
 //thumb support radius
 T_SRADIUS = 3;
@@ -392,7 +392,7 @@ difference()
       S_WLENGTH * SCALE,
         
       //WIDTH (y axis)
-      (H_THICK * 2 - S_FTHICK) * SCALE,
+      (H_THICK * 2) * SCALE,
         
       //HEIGHT (z axis)
       S_WWIDTH * SCALE]);
@@ -554,7 +554,7 @@ for(i = [1:4])
     F_RADIUS / 2 * SCALE,
   
     //WIDTH (y axis)
-    (F_OFF + F_RADIUS) * SCALE,
+    (F_OFF + F_RADIUS + H_THICK) * SCALE,
   
     //HEIGHT (z axis)
     F_STHICK * SCALE]);
@@ -576,7 +576,7 @@ for(i = [1:4])
     F_RADIUS / 2 * SCALE,
   
     //WIDTH (y axis)
-    (F_OFF + F_RADIUS) * SCALE,
+    (F_OFF + F_RADIUS+ H_THICK) * SCALE,
   
     //HEIGHT (z axis)
     F_STHICK * SCALE]);
@@ -798,7 +798,7 @@ cylinder(
       (TOPWIDTH - H_THICK * 2 - S_LENGTH * 0.1 - S_WWIDTH) * SCALE,
         
       //Z TRANSLATION
-      (T_ZOFF + S_FTHICK) * SCALE])
+      (T_ZOFF) * SCALE])
         
     #cube([
       //LENGTH (x axis)
@@ -808,7 +808,7 @@ cylinder(
       S_WWIDTH * SCALE,
         
       //HEIGHT (z axis)
-      (H_HEIGHT - T_ZOFF - F_OFF - S_FTHICK) * SCALE]);
+      (H_HEIGHT - T_ZOFF - F_OFF) * SCALE]);
 }
 
 //thumb connector
@@ -928,7 +928,7 @@ difference()
     F_RADIUS / 2 * SCALE,
   
     //WIDTH (y axis)
-    (F_OFF + F_RADIUS) * SCALE,
+    (F_OFF + F_RADIUS + H_THICK) * SCALE,
   
     //HEIGHT (z axis)
     F_RADIUS / 2 * SCALE]);

@@ -11,7 +11,7 @@ LENGTH = 25 * SCALE;
 WIDTH = 5 * SCALE;
 
 //connector thickness
-THICK = 1 * SCALE;
+THICK = 3 * SCALE;
 
 //hole radius
 RADIUS = 1 * SCALE;

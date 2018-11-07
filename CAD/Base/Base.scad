@@ -9,41 +9,41 @@ include <connect.scad>
 TOPTHICK = 0;
 
 //bottom thickness
-BOTTHICK = 10; //TEMP
+BOTTHICK = 5; //TEMP
 
 //height of the full design
-HEIGHT = 100; //TEMP
+HEIGHT = 70; //TEMP
 
 //dimensions of the bottom layer
-BOTLENGTH = TOPLENGTH * 1.5; //length
-BOTWIDTH = TOPWIDTH * 1.5;   //width
+BOTLENGTH = TOPLENGTH * 1.1; //length
+BOTWIDTH = TOPWIDTH * 1.1;   //width
 
 ///////////////////////////////////
 /////////////   LCD   /////////////
 ///////////////////////////////////
 
 //dimensions
-L_LENGTH = 25; //length
+L_LENGTH = 71; //length
 
-L_WIDTH = 10;  //width
+L_WIDTH = 27;  //width
 
 //placement on base wall (offset from 0,0)
-L_XOFF = 30; //offset on x-axis
-L_YOFF = 5;  //offset on y-axis
+L_XOFF = (BOTLENGTH - TOPLENGTH) / 2 + TOPLENGTH / 2 - L_LENGTH / 2; //offset on x-axis
+L_YOFF = 35;  //offset on y-axis
 
 //screw hole
-L_SRADIUS = 2; //screw hole radius
-L_SOFF = 2; //offset from display
+L_SRADIUS = 1.25; //screw hole radius
+L_SOFF = 2.5; //offset from display
 
 ///////////////////////////////////
 ///////   ROTARY ENCODER   ////////
 ///////////////////////////////////
 //radius
-RE_RADIUS = 3;
+RE_RADIUS = 4;
 
 //placement on base wall (offset from 0,0)
-RE_XOFF = 65; //offset on x-axis
-RE_YOFF = 7;  //offset on y-axis
+RE_XOFF = (BOTLENGTH - TOPLENGTH) / 2 + TOPLENGTH / 2; //offset on x-axis
+RE_YOFF = 22;  //offset on y-axis
 
 ///////////////////////////////////
 /////////   POWER INPUT   /////////
@@ -54,19 +54,19 @@ PI_LENGTH = 8; //length
 PI_WIDTH = 4;  //width
 
 //placement on base wall(offset from 0,0)
-PI_XOFF = 47; //offset on x-axis
-PI_YOFF = 5; //offset on y-axis
+PI_XOFF = 53 + (BOTWIDTH - TOPWIDTH) / 2; //offset on x-axis
+PI_YOFF = BOTTHICK + 1; //offset on y-axis
 
 
 ///////////////////////////////////
 ////////   POWER SWITCH   /////////
 ///////////////////////////////////
 //radius
-PS_RADIUS = 3;
+PS_RADIUS = 7;
 
 //placement on base wall (offset from 0,0)
-PS_XOFF = 35;
-PS_YOFF = 8;
+PS_XOFF = 25;
+PS_YOFF = 25;
 
 difference(){ 
   //BASE SHAPE  
