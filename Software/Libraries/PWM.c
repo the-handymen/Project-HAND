@@ -12,14 +12,14 @@ typedef struct
 	uint32_t pctl;
 	uint32_t gen;
 	uint32_t en;
-	
+
 	GPIOA_Type *        r_gpio;
 	volatile uint32_t * r_gen;
 	volatile uint32_t * r_load;
 	volatile uint32_t * r_cmp;
 	volatile uint32_t * r_ctl;
 	volatile uint32_t * r_en;
-	
+
 	// User Defined
 	uint32_t freq;
 }
@@ -53,7 +53,7 @@ PWM_Data_ PWMs[20] =
 void PWM_Init(PWM_ pwm, uint32_t freq)
 {
 	PWMs[pwm].freq = freq;
-	
+
 	SYSCTL->RCC &= ~(0x400000);                       // Don't divide system clock.
   SYSCTL->RCC |= (1<<20);                           // Divide PWM clock.
 	SYSCTL->RCC &= ~(0xE0000);                        // Clear PWMDIV (for next step).
@@ -62,6 +62,7 @@ void PWM_Init(PWM_ pwm, uint32_t freq)
 
 	SYSCTL->RCGCPWM |= PWMs[pwm].rcgcpwm;             // Enable PWM clock.
 	SYSCTL->RCGCGPIO |= PWMs[pwm].rcgcgpio;           // Enable GPIO clock.
+	// TODO: Correctly wait for RCGCGPIO to set.
 	for (int i = 0; i < 100; i++);
 	PWMs[pwm].r_gpio->AMSEL &= ~(PWMs[pwm].pins);     // Not analog.
 	PWMs[pwm].r_gpio->AFSEL |= PWMs[pwm].pins;        // Alternate function.
