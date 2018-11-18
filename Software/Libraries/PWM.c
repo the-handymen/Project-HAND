@@ -25,7 +25,7 @@ typedef struct
 }
 PWM_Data_;
 
-PWM_Data_ PWMs[20] =
+PWM_Data_ PWMs[] =
 {
 	                         /*10*/            /*FEDCBA*/        /*76543210*/        /*76543210*/
 [M0PWM0_]   = { .rcgcpwm = 0b01, .rcgcgpio = 0b000010, .pins = 0b01000000, .pctl = 0x04000000, .gen = 0x0000008C, .en = 0b00000001, .r_gpio = GPIOB, .r_gen = &PWM0->_0_GENA, .r_load = &PWM0->_0_LOAD, .r_cmp = &PWM0->_0_CMPA, .r_ctl = &PWM0->_0_CTL, .r_en = &PWM0->ENABLE },
@@ -64,6 +64,13 @@ void PWM_Init(PWM_ pwm, uint32_t freq)
 	SYSCTL->RCGCGPIO |= PWMs[pwm].rcgcgpio;           // Enable GPIO clock.
 	// TODO: Correctly wait for RCGCGPIO to set.
 	for (int i = 0; i < 100; i++);
+	
+	if ((PWMs[pwm].r_gpio == GPIOF) && (PWMs[pwm].pins == 0b00000001))
+	{
+		GPIOF->LOCK = 0x4C4F434B;
+		GPIOF->CR |= 0xFF;
+	}
+	
 	PWMs[pwm].r_gpio->AMSEL &= ~(PWMs[pwm].pins);     // Not analog.
 	PWMs[pwm].r_gpio->AFSEL |= PWMs[pwm].pins;        // Alternate function.
 	PWMs[pwm].r_gpio->DEN |= PWMs[pwm].pins;          // Digital enable.
