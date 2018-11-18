@@ -1,12 +1,16 @@
 
 #include "../Libraries/QEI.h"
 #include "../Libraries/PWM.h"
+#include "../Libraries/SysTick.h"
 
 #include <tm4c123gh6pm.h>
 
 #define TEST_PWM
 
 #define Bit(b) ( 1U<<b )
+
+
+PWM_ servos[5] = {M0PWM0_, M0PWM1_, M1PWM4_, M1PWM6_, M0PWM6_0_};
 
 void setup(void)
 {
@@ -15,10 +19,14 @@ void setup(void)
 #endif
 	
 #ifdef TEST_PWM
-	PWM_Init(M1PWM0_, 50);
-	PWM_Init(M0PWM2_, 50);
-	PWM_Init(M0PWM0_, 50);
+	SysTick_Init();
+	for (int i = 0; i < 5; i++)
+	{
+		PWM_Init(servos[i], 50);
+	}
+#endif
 	
+#ifdef TEST_ADC
 #endif
 }
 
@@ -29,22 +37,18 @@ void loop(void)
 #endif
 	
 #ifdef TEST_PWM
-	while(1)
+	for (int i =0; i < 5; i++)
 	{
-	for(int i = 0; i < 100; i++)
-  {
-	PWM_Position(M1PWM0_, 18000 + i * 10);
-	PWM_Position(M0PWM0_, 18000 + i * 5);
-	PWM_Position(M0PWM2_, 18000 + i * 1);
-		for(int j = 0; j < 25000; j++); //delay
+		PWM_Position(servos[i], 18000);
+		SysTick_WaitSeconds(1);
 	}
-	for(int k = 0; k < 100; k++)
+	for (int i = 4; i >= 0; i--)
 	{
-	PWM_Position(M1PWM0_, 19000 - k * 10);
-	PWM_Position(M0PWM0_, 18500 - k * 5);
-	PWM_Position(M0PWM2_, 18100 - k * 1);
-		for(int j = 0; j < 25000; j++); //delay
+		PWM_Position(servos[i], 19000);
+		SysTick_WaitSeconds(1);
 	}
- }
+#endif
+ 
+#ifdef TEST_ADC
 #endif
 }
