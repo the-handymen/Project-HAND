@@ -1,7 +1,8 @@
 
 #include "../Libraries/ADC.h"
 #include "../Libraries/SysTick.h"
-#include "../Libraries/UART.h"
+//#include "../Libraries/UART.h"
+#include "../Libraries/LCD.h"
 
 //#include <tm4c123gh6pm.h>
 
@@ -43,7 +44,11 @@ void setup(void)
 
 #ifdef lcd
 	SysTick_Init();
-	UART_Init();
+	LCD_Init();
+	
+	LCD_SettingsContrast(0);
+	LCD_SettingsColor(100,17,86);
+	LCD_ClearScreen();
 #endif
 }
 
@@ -63,6 +68,14 @@ void loop(void)
 #endif
 
 #ifdef lcd
-	
+	static int i;
+	LCD_PrintString("Counter: ");
+	int size = LCD_PrintNumber(i++);
+	LCD_ChangePosition(1, 2);
+	LCD_PrintString("(digits: ");
+	LCD_PrintNumber(size);
+	LCD_PrintChar(')');
+	SysTick_WaitSeconds(1);
+	LCD_ClearScreen();
 #endif
 }
