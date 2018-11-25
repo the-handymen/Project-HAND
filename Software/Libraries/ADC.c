@@ -36,7 +36,7 @@ void ADC_Init(uint32_t * channels, int count)
 
 	ADC0->PC = (ADC0->PC & ~0xF) | 0x01; // 125K Samples per second.
 	ADC0->SSPRI = 0x3210;                // Prioritize Sequencer 0.
-	ADC0->EMUX |= 0x000F;             // Software start for Sequencer 0.
+	ADC0->EMUX &= ~0x000F;             // Software start for Sequencer 0.
 	ADC0->PSSI |= 0x1;                   // Initiate conversion on Sequencer 0.
 	ADC0->ACTSS &= ~(0x1);               // Disable Sequencer 0 to configure.
 	ADC0->SSMUX0 = 0x24567;                    // Hook up ------------- to Sequencer 0.
