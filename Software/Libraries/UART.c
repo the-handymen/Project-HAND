@@ -90,3 +90,11 @@ char UART_ReadChar(UART_ uart)
 	while((UARTs[uart].r_uart->FR&0x10) != 0);
   return((char)(UARTs[uart].r_uart->DR&0xFF));
 }
+
+void UART_ClearFIFO(UART_ uart)
+{
+	while ((UARTs[uart].r_uart->FR&0x10) == 0)
+	{
+		UART_ReadChar(uart);
+	}
+}

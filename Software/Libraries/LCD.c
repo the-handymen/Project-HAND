@@ -77,8 +77,14 @@ void LCD_ChangePosition(LCD_ lcd, uint8_t row, uint8_t col)
 
 void LCD_ClearScreen(LCD_ lcd)
 {
-	UART_WriteChar(LCDs[lcd].uart, LCD_ENTER_SETTINGS);
-	UART_WriteChar(LCDs[lcd].uart, LCD_CLEAR_SETTING);
+//	UART_WriteChar(LCDs[lcd].uart, LCD_ENTER_SETTINGS);
+//	UART_WriteChar(LCDs[lcd].uart, LCD_CLEAR_SETTING);
+	
+	for (int i = 0; i < 32; i++)
+	{
+		LCD_PrintChar(lcd, ' ');
+	}
+	LCD_ChangePosition(lcd, 0, 0);
 }
 
 void LCD_NextLine(LCD_ lcd)
