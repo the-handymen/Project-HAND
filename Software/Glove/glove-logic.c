@@ -34,29 +34,40 @@ byte frame[1 + 5] = {0};
 
 void setup(void)
 {
-	ADC_Init(raw, 5);
-	SysTick_Init();
-	LCD_Init(LCD0_, UART2_, 9600);
+//	ADC_Init(raw, 5);
+//	SysTick_Init();
+//	LCD_Init(LCD0_, UART5_, 9600);
+//	
+//	LCD_SettingsContrast(LCD0_, 0);
+//	LCD_SettingsColor(LCD0_, 100,17,86);
+//	LCD_ClearScreen(LCD0_);
 	
-	LCD_SettingsContrast(LCD0_, 0);
-	LCD_SettingsColor(LCD0_, 100,17,86);
+	SysTick_Init();
+	UART_Init(UART0_, true, true, 9600);
+	LCD_Init(LCD0_, UART5_, 9600);
+	
 	LCD_ClearScreen(LCD0_);
+	LCD_PrintString(LCD0_, "hi: ");
 }
 
 void loop(void)
 {
-	ADC_Read();
-	Glove_Frame(frame, raw, 5);
+//	ADC_Read();
+//	Glove_Frame(frame, raw, 5);
 
-	for (int i = 0; i < 5; i++)
-	{
-		LCD_PrintChar(LCD0_, i + 'A');
-		int n = LCD_PrintNumber(LCD0_, ByteToPercent(frame[1 + i]));
-		for (int j = 0; j < 5-n; j++)
-		{
-			LCD_PrintChar(LCD0_, ' ');
-		}
-	}
-	SysTick_WaitSeconds(1);
-	LCD_ClearScreen(LCD0_);
+//	for (int i = 0; i < 5; i++)
+//	{
+//		LCD_PrintChar(LCD0_, i + 'A');
+//		int n = LCD_PrintNumber(LCD0_, ByteToPercent(frame[1 + i]));
+//		for (int j = 0; j < 5-n; j++)
+//		{
+//			LCD_PrintChar(LCD0_, ' ');
+//		}
+//	}
+//	SysTick_WaitSeconds(1);
+//	LCD_ClearScreen(LCD0_);
+	
+	char c = UART_ReadChar(UART0_);
+	UART_WriteChar(UART0_, c);
+	LCD_PrintChar(LCD0_, c);
 }

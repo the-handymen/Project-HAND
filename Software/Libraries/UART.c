@@ -84,3 +84,9 @@ void UART_WriteChar(UART_ uart, char c)
 	while ((UARTs[uart].r_uart->FR&0x20) != 0);
 	UARTs[uart].r_uart->DR = c;
 }
+
+char UART_ReadChar(UART_ uart)
+{
+	while((UARTs[uart].r_uart->FR&0x10) != 0);
+  return((char)(UARTs[uart].r_uart->DR&0xFF));
+}

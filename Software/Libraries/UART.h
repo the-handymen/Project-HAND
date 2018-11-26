@@ -19,5 +19,6 @@ typedef enum
 
 void UART_Init(UART_ uart, bool rx, bool tx, uint32_t baud);
 void UART_WriteChar(UART_ uart, char c);
+char UART_ReadChar(UART_ uart);
 
 #endif
