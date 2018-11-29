@@ -34,7 +34,7 @@ void Frame_Send(byte * frame, unsigned data_size)
 {
 	for (unsigned i = 0; i < 1 + data_size; i++)
 	{
-		UART_WriteChar(UART4_, frame[i]);
+		UART_WriteChar(UART3_, frame[i]);
 	}
 }
 
@@ -43,7 +43,7 @@ void setup(void)
 {
 	ADC_Init(raw, 5);
 	SysTick_Init();
-	UART_Init(UART4_, false, true, 9600);
+	UART_Init(UART3_, false, true, 9600);
 }
 
 void loop(void)
