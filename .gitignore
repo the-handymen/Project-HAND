@@ -28,3 +28,7 @@ Hardware/Hand/Hand.b#6
 Hardware/Hand/Hand.b#7
 Hardware/Hand/Hand.b#8
 Hardware/Hand/Hand.b#9
+Software/Glove/RTE/_Target_1/RTE_Components.h
+Software/Glove/RTE/Device/TM4C123GH6PM/startup_TM4C123.s
+Software/Glove/RTE/Device/TM4C123GH6PM/system_TM4C123.c
+Hardware/Hand/Hand.s#1
