@@ -56,6 +56,21 @@ void UpdateDisplay(void)
 	}
 }
 
+void MoveFingers(void)
+{
+	int min_raw = 90;
+	int max_raw = 160;
+	
+	for (int i = 0; i < 2; i++)
+	{
+		PWM_Position(servos[i], 19000.0 - (1000.0/(max_raw-min_raw)*(data[i]-min_raw)));
+	}
+	for (int i = 2; i < 5; i++)
+	{
+		PWM_Position(servos[i], 18000.0 + (1000.0/(max_raw-min_raw)*(data[i]-min_raw)));
+	}
+}
+
 
 void setup(void)
 {
@@ -77,14 +92,7 @@ void loop(void)
 	Frame_Unpack(frame, data, 5);
 	LCD_ClearScreen(LCD0_);
 	UpdateDisplay();
-	for (int i = 0; i < 2; i++)
-	{
-		PWM_Position(servos[i], 19000.0 - (1000.0/(130-90)*(data[i]-90)));
-	}
-	for (int i = 2; i < 5; i++)
-	{
-		PWM_Position(servos[i], 18000.0 + (1000.0/(130-90)*(data[i]-90)));
-	}
+	MoveFingers();
 	//SysTick_WaitMilliseconds(500);
 	UART_ClearFIFO(UART2_);
 }
