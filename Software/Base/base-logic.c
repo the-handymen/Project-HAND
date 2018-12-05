@@ -38,25 +38,25 @@ void MoveFingers(void)
 	int min_raw = 90;
 	int max_raw = 160;
 	
-	for (int i = 0; i < 2; i++)
-	{
-		PWM_Position(servos[i], 19000.0 - (1000.0/(max_raw-min_raw)*(data[i]-min_raw)));
-	}
-	for (int i = 2; i < 5; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		PWM_Position(servos[i], 18000.0 + (1000.0/(max_raw-min_raw)*(data[i]-min_raw)));
+	}
+	for (int i = 3; i < 5; i++)
+	{
+		PWM_Position(servos[i], 19000.0 - (1000.0/(max_raw-min_raw)*(data[i]-min_raw)));
 	}
 }
 
 void MoveFingersDiscrete(bool position[])
 {
-	for (int i = 0; i < 2; i++)
-	{
-		PWM_Position(servos[i], 19000 - 1000*position[i]);
-	}
-	for (int i = 2; i < 5; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		PWM_Position(servos[i], 18000 + 1000*position[i]);
+	}
+	for (int i = 3; i < 5; i++)
+	{
+		PWM_Position(servos[i], 19000 - 1000*position[i]);
 	}
 }
 
@@ -176,7 +176,7 @@ void loop_rps(void)
 	Announce("Paper...", 1);
 	Announce("Scissors...", 1);
 	
-	CollectData(frame, data);
+	
 	PlayGame(&glove, &hand, &result);
 	MoveFingersDiscrete(positions[hand]);
 	Announce("Shoot!", 1);
@@ -198,15 +198,24 @@ void loop_rps(void)
 	}
 }
 
+void DisplayValues(void)
+{
+	static unsigned update_screen = 0;
+	if (update_screen++ == 50)
+	{
+		LCD_ClearScreen(LCD0_);
+		UpdateDisplay();
+		
+		update_screen = 0;
+	}
+}
+
 void loop_im(void)
 {
-	Frame_Recieve(frame, 5);
-	Frame_Unpack(frame, data, 5);
-	LCD_ClearScreen(LCD0_);
-	UpdateDisplay();
+	CollectData(frame, data);
+	DisplayValues();
 	MoveFingers();
 	//SysTick_WaitMilliseconds(500);
-	UART_ClearFIFO(UART2_);
 }
 
 #define im
