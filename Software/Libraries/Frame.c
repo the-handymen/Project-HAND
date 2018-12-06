@@ -24,7 +24,4 @@ void Frame_Unpack(byte * frame, byte * data, unsigned data_size)
 	{
 		data[i] = frame[1 + i];
 	}
-	
-	///////////////////////////////////////////////////////////////////////////////
-	data[4] = data[3];
 }

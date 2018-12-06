@@ -176,7 +176,7 @@ void loop_rps(void)
 	Announce("Paper...", 1);
 	Announce("Scissors...", 1);
 	
-	
+	CollectData(frame, data);
 	PlayGame(&glove, &hand, &result);
 	MoveFingersDiscrete(positions[hand]);
 	Announce("Shoot!", 1);
@@ -218,7 +218,7 @@ void loop_im(void)
 	//SysTick_WaitMilliseconds(500);
 }
 
-#define im
+#define rps
 void loop(void)
 {
 #ifdef rps
