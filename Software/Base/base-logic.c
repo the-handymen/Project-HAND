@@ -218,7 +218,73 @@ void loop_im(void)
 	//SysTick_WaitMilliseconds(500);
 }
 
-#define rps
+void MoveFingersDiscreteSeries(bool positions[][5], unsigned count, uint32_t delay)
+{
+	for (int i = 0; i < count; i++)
+	{
+		MoveFingersDiscrete(positions[i]);
+		SysTick_WaitMilliseconds(delay);
+	}
+}
+
+void loop_ss(void)
+{
+	// Scale
+	Announce("SCALE\nscreensaver", 0);
+	static bool scale[][5] = {
+		{ 1, 0, 0, 0, 0 },
+		{ 0, 1, 0, 0, 0 },
+		{ 0, 0, 1, 0, 0 },
+		{ 0, 0, 0, 1, 0 },
+		{ 0, 0, 0, 0, 1 },
+		{ 0, 0, 0, 1, 0 },
+		{ 0, 0, 1, 0, 0 },
+		{ 0, 1, 0, 0, 0 }
+	};
+	//MoveFingersDiscreteSeries(scale, 8, 500);
+	
+	// Counting
+	Announce("COUNTING\nscreensaver", 0);
+	static bool counting[][5] = {
+		{ 1, 1, 1, 1, 1 },
+		{ 1, 0, 1, 1, 1 },
+		{ 1, 0, 0, 1, 1 },
+		{ 1, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0 }
+	};
+	MoveFingersDiscreteSeries(counting, 6, 500);
+	
+	// The Wave
+	Announce("THE WAVE\nscreensaver", 0);
+	static bool wave[][5] = {
+		{ 1, 0, 0, 0, 0 },
+		{ 0, 1, 0, 0, 0 },
+		{ 0, 0, 1, 0, 0 },
+		{ 0, 0, 0, 1, 0 },
+		{ 0, 0, 0, 0, 1 }
+	};
+	//MoveFingersDiscreteSeries(wave, 5, 40);
+	
+	// The Wave
+	Announce("THE WAVE I\nscreensaver", 0);
+	static bool wavei[][5] = {
+		{ 0, 1, 1, 1, 1 },
+		{ 1, 0, 1, 1, 1 },
+		{ 1, 1, 0, 1, 1 },
+		{ 1, 1, 1, 0, 1 },
+		{ 1, 1, 1, 1, 0 },
+		{ 1, 1, 1, 0, 1 },
+		{ 1, 1, 0, 1, 1 },
+		{ 1, 0, 1, 1, 1 },
+		{ 0, 1, 1, 1, 1 }
+	};
+	//MoveFingersDiscreteSeries(wavei, 9, 100);
+	
+	
+}
+
+#define ss
 void loop(void)
 {
 #ifdef rps
@@ -227,5 +293,9 @@ void loop(void)
 	
 #ifdef im
 	loop_im();
+#endif
+	
+#ifdef ss
+	loop_ss();
 #endif
 }
