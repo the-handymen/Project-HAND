@@ -8,6 +8,8 @@
 #include "../Libraries/Frame.h"
 #include "../Libraries/RockPaperScissors.h"
 
+#include <tm4c123gh6pm.h>
+
 ////////////////////////////////////////////////////////////////////////////////
 
 byte frame[1 + 5] = {0};
@@ -111,6 +113,21 @@ POSITION_ DeduceGlove(void)
 
 ///////////////////////////////////////////////////////////////
 
+void Button_Init(void)
+{
+	GPIOC->AMSEL &= ~0b10000000;
+	GPIOC->PCTL &= ~0xF0000000;
+	GPIOC->DIR &= ~0b10000000;
+	GPIOC->AFSEL &= ~0b10000000;
+	GPIOC->PUR |= 0b10000000;
+	GPIOC->DEN |= 0b10000000;
+}
+
+bool Button_Status(void)
+{
+	return !!!(GPIOC->DATA & 0b10000000);
+}
+
 void setup(void)
 {
 	SysTick_Init();
@@ -126,23 +143,7 @@ void setup(void)
 	UART_Init(UART2_, true, false, 9600);
 	LCD_ClearScreen(LCD0_);
 	
-	
-//	bool fingers[][5] = {
-//		{ 1, 0, 0, 0, 0 },
-//		{ 0, 1, 0, 0, 0 },
-//		{ 0, 0, 1, 0, 0 },
-//		{ 0, 0, 0, 1, 0 },
-//		{ 0, 0, 0, 0, 1 }
-//	};
-//	
-//	while (1)
-//	{
-//		for (int i = 0; i < 5; i++)
-//		{
-//			MoveFingersDiscrete(fingers[i]);
-//			SysTick_WaitSeconds(1);
-//		}
-//	}
+	Button_Init();
 }
 
 void Announce(char * string, uint32_t length)
@@ -280,11 +281,64 @@ void loop_ss(void)
 		{ 0, 1, 1, 1, 1 }
 	};
 	//MoveFingersDiscreteSeries(wavei, 9, 100);
-	
-	
 }
 
-#define ss
+typedef enum {
+	SS,
+	IM,
+	RPS
+} MODE_;
+
+void loop_ult(void)
+{
+	static bool prev, curr;
+	static MODE_ mode;
+	
+	prev = curr;
+	curr = Button_Status();
+	
+//	if (curr != prev)
+//	{
+//		int poll = 0;
+//		for (int i = 0; i < 1000; i++)
+//		{
+//			poll += Button_Status();
+//		}
+//		
+//		if (poll > 900)
+//		{
+//		}
+//	}
+	
+	
+	//LCD_ClearScreen(LCD0_);
+	
+	if (curr)
+	{
+		if (curr != prev)
+		++mode; if (mode > RPS) { mode = SS; }
+		//LCD_PrintString(LCD0_, "Yes\n");
+	}
+	else
+	{
+		//LCD_PrintString(LCD0_, "No\n");
+	}
+	switch (mode)
+	{
+		case SS:  //LCD_PrintString(LCD0_, "SS");
+							loop_ss();
+							break;
+		case IM:  //LCD_PrintString(LCD0_, "IM\n");
+							loop_im();
+							break;
+		case RPS: //LCD_PrintString(LCD0_, "RPS\n");
+							loop_rps();
+							break;
+	}
+	//SysTick_WaitMilliseconds(100);
+}
+
+#define ult
 void loop(void)
 {
 #ifdef rps
@@ -297,5 +351,9 @@ void loop(void)
 	
 #ifdef ss
 	loop_ss();
+#endif
+	
+#ifdef ult
+	loop_ult();
 #endif
 }
