@@ -1,2 +1,2 @@
 # Project-H.A.N.D.
-H.A.N.D.: Handy Apparatus for Nonlocal Distances
+H.A.N.D.: Handy Appendage for Nonlocal Distances
