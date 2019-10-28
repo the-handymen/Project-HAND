@@ -1,6 +1,8 @@
 
 #include "PRNG.h"
 
+/* I found this simple PRNG from Wikipedia. Credit: https://en.wikipedia.org/wiki/Xorshift. */
+
 static uint32_t state;
 static void seed_xorshift32(uint32_t seed)
 {
@@ -16,6 +18,8 @@ static uint32_t xorshift32()
 	state = x;
 	return x;
 }
+
+/* This stuff is mine though. */
 
 void PRNG_Seed(uint32_t seed)
 {
